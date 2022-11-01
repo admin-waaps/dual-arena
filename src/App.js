@@ -19,12 +19,14 @@ import {
   Router,
 } from "react-router-dom";
 import Race from "./pages/Race";
+// import ProfilePage from "./components/profile_page/profile_page";
 // import Home from './pages/home';
 
 function App() {
-  return (
+  return ( 
     <>
       <Routes>
+        {/* <Route path="/" element={<ProfilePage/>} exact> */}
         <Route path="/" element={<Home/>} exact>
           <Route path="/" element={<Component />} />
           <Route path="/duel" element={<Duel />} />
