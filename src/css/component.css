@@ -1,0 +1,14 @@
+@media screen and (max-width: 1183px) {
+    .lg-res {
+        display: flex;
+        flex-direction: column;
+    }
+    .comp1comp2{
+        display: flex;
+        
+    }
+    .comp4comp5
+    {
+        width: 100%
+    }
+  }
