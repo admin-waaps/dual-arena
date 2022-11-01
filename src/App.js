@@ -9,6 +9,10 @@ import Loot from "./pages/Loot";
 import Wheel from "./pages/Wheel";
 import Poker from "./pages/Poker";
 import Error from "./pages/Error";
+import Race from "./pages/Race";
+import Profile from "./pages/Profile";
+import Exchange from "./pages/Exchange";
+import Support from "./pages/Support";
 
 import {
   Routes,
@@ -18,7 +22,6 @@ import {
   useParams,
   Router,
 } from "react-router-dom";
-import Race from "./pages/Race";
 // import Home from './pages/home';
 
 function App() {
@@ -32,6 +35,9 @@ function App() {
           <Route path="/Wheel" element={<Wheel />} />
           <Route path="/Poker" element={<Poker />} />
           <Route path="/Race" element={<Race />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/exchange" element={<Exchange />} />
+          <Route path="/support" element={<Support />} />
           <Route path="/Error" element={<Error />} />
         </Route>
       </Routes>

@@ -1,11 +1,11 @@
 import { TbSword } from "react-icons/tb";
 
-const DualBagHeader = () => {
+const SupportBreadCrum = () => {
   return (
     <div className="bg-[#1D1B3F]  w-[869px] h-[40px] flex items-center justify-between ">
-      <div className=" flex justify-between items-center h-[38px] w-[200px]">
-        <TbSword className=" w-[30px] h-[30px] text-[#fff]" />
-        <span className=" font-medium text-[28px] text-[#fff]">Dual Arena</span>
+      <div className=" flex justify-around items-center h-[38px] w-[auto]">
+        
+        <span className=" font-medium text-[28px] text-[#fff]">Support</span>
       </div>
 
       <div className=" w-[590px] h-[38px] flex justify-end items-center ">
@@ -40,4 +40,4 @@ const DualBagHeader = () => {
   );
 };
 
-export default DualBagHeader;
+export default SupportBreadCrum;
