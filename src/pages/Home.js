@@ -1,36 +1,79 @@
 import React from "react";
-import { Outlet } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 import Chat from "../components/Chat";
 import Header from "../components/Header";
-import Footer from "../components/Home_Components/Footer";
+import Footer from "../components/Footer";
 import Sidebar from "../components/Sidebar";
+import "../css/home.css";
+import Logo from "../assets/icons/logo.png";
 
 const Home = () => {
   return (
-    <div className=" flex h-[100vh] w-[100vw] bg-[#1D1B3F]">
-      <div className="HSC">
-        <div className=" flex-row lg:h-[100vh] md:h-[100vh] sm:h-[100vh] lg:w-[80vw] md:w-[80vw] sm:w-[100vw]">
-          <div className="flex justify-center items-center header  lg:h-[6vh] md:h-[6vh] sm:h-[6vh]  lg:w-[80vw] md:w-[80vw] sm:w-full ">
-            <Header />
+    // <div className=" flex h-[100vh] w-[100vw] bg-[#1D1B3F]">
+    //   <div className="HSC ">
+    //     <div className=" flex-row h-[100vh] w-[80vw]">
+    //       <div className=" header h-[6vh] w-[80vw] bg-[#1D1B3F] fixed flex">
+    //         {/* <Header /> */}
+    //       </div>
+    //       <div className="flex ">
+    //         <div className="flex justify-center items-center h-[100vh] w-[130px] fixed ">
+    //           <Sidebar />
+    //         </div>
+
+    //         <div className="2xl:w-[1100px] xl:w-[1100px] lg:w-[1000px] md:w-[650px] sm:w-[300px] text-white ml-[150px] mt-[60px] ">
+    //             <Outlet/>
+    //         </div>
+
+    //       </div>
+
+    //     </div>
+
+    //   </div>
+
+    //   <div className="chat h-full text-black bg-pink-400 ">
+    //     <Chat />
+    //     </div>
+    // </div>
+    <center>
+      <div className="flex justify-between h-[auto] w-[auto] text-white ">
+        {/* sidebar */}
+
+        <div className="siderbar h-auto w-auto  px-5">
+          <div className="h-[50px] w-[50px] mt-3 mb-3 ">
+            <Link to='/'><img src={Logo} className="logo" alt="dual-arena-logo" /></Link>
           </div>
-          <div className="flex lg:h-[90vh] md:h-[90vh] sm:h-[90vh] lg:w-[80vw] md:w-[80vw] sm:w-[80vw]">
-            <div className="flex justify-center items-center  lg:h-[90vh] md:h-[90vh] sm:h-[90vh] lg:w-[10vw] md:w-[15vw] sm:w-[20vw]">
-              <Sidebar />
-            </div>
-            <div className="2xl:w-[1100px] xl:w-[1100px] lg:w-[1000px] md:w-[650px] sm:w-[300px] text-white border-[1px] ">
-                <Outlet/>
-            </div>
+          <div>
+            <Sidebar />
           </div>
         </div>
-        <center className='ml-20 py-10'>
 
+        {/* content */}
 
-        </center>
+        <div className="gap w-[80px] "></div>
+        <div className="h-[100vh] w-full px-10 mt-2">
+
+          <div className="h-[30px]">
+          <Header />
+          </div>
+
+          <div className="h-[600px]">
+          <Outlet/>
+          </div>
+          
+          <div className="h-[25px] mt-[186px] mb-[30px] ">
+          <Footer />
+          </div>
+          
+         
+        </div>
+        <div className="gap w-[80px] "></div>
+ 
+        {/* chat */}
+        <div className="h-auto w-auto float-right">
+          <Chat />
+        </div>
       </div>
-      <div className="chat h-full 2xl:w-[330px] xl:w-[330px] lg:w-[330px] text-black bg-pink-400">
-        <Chat />
-        </div>
-    </div>
+    </center>
   );
 };
 
