@@ -1,11 +1,20 @@
+import { useContext, useState } from "react";
+import OpenTicket from "./Support/OpenTicket";
 import { TbSword } from "react-icons/tb";
+// import { SupportToggleContext } from '../../ContextApi/supportToogleContext';
 
-const DualBagHeader = () => {
+const PokerBreadCrum = () => {
+
+  // let [open, setOpen] = useContext(SupportToggleContext);
+  // console.log(open)
+  // const ToggleOpenTicket = () => {
+  //   setOpen(!open);
+  // };
+
   return (
-    <div className="bg-[#1D1B3F]  w-full h-[40px] flex items-center justify-between">
-      <div className=" flex justify-between items-center h-[38px] w-[200px]">
-        <TbSword className=" w-[30px] h-[30px] text-[#fff]" />
-        <span className=" font-medium text-[28px] text-[#fff]">Dual Arena</span>
+    <div className="bg-[#1D1B3F]  w-[100%] h-[40px] flex items-center justify-between ">
+      <div className=" flex justify-around items-center h-[38px] w-[auto]">
+        <span className=" font-medium text-[28px] text-[#fff]">Poker</span>
       </div>
 
       <div className=" w-[590px] h-[38px] flex justify-end items-center ">
@@ -20,7 +29,9 @@ const DualBagHeader = () => {
 
         <div className="w-[440px] h-[38px] flex items-center justify-end gap-4">
           <select className="focus:outline-none bg-[#23224A] text-[#fff]  h-[38px] w-[142px] rounded-[31px] px-[15px] text-[12px] border-r-[14px] border-r-[#23224A]">
-            <option value="Whip" className="">Whip</option>
+            <option value="Whip" className="">
+              Whip
+            </option>
             <option value="Whip">Whip</option>
             <option value="Whip">Whip</option>
             <option value="Whip">Whip</option>
@@ -31,13 +42,23 @@ const DualBagHeader = () => {
             <option value="Whip">Whip</option>
             <option value="Whip">Whip</option>
           </select>
-          <button className="bg-[#575DE8] text-[#fff] h-[36px] w-[103px] rounded-[31px] p-[5px] text-[12px]">
-            Create Dual
-          </button>
+
+          {/* {open ? ( */}
+            {/* <div className="fixed w-[100vw] h-[100vh] bg-black bg-opacity-[50%] translate-x-[25%] translate-y-[40%] z-10 p-[10%]">
+              <OpenTicket/>
+            </div> */}
+          {/* ) : ( */}
+            <button
+              // onClick={ToggleOpenTicket}
+              className="bg-[#575DE8] text-[#fff] h-[36px] w-[103px] rounded-[31px] p-[5px] text-[12px]"
+            >
+              Open Tickets
+            </button>
+          {/* )} */}
         </div>
       </div>
     </div>
   );
 };
 
-export default DualBagHeader;
+export default PokerBreadCrum;

@@ -1,8 +1,10 @@
 import React from 'react'
-
+import PokerBreadCrum from "../components/PokerBreadCrum";
 const Poker = () => {
   return (
-    <div>Poker</div>
+    <div className='mt-[40px]'>
+      <PokerBreadCrum />
+    </div>
   )
 }
 
