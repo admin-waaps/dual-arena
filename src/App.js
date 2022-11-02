@@ -23,14 +23,14 @@ import {
   Router,
 } from "react-router-dom";
 
-// import ProfilePage from "./components/profile_page/profile_page";
+// import PrivacyPolicy from "./components/privacy_policy/privacy_policy";
 // import Home from './pages/home';
 
 function App() {
   return ( 
     <>
       <Routes>
-        {/* <Route path="/" element={<ProfilePage/>} exact> */}
+        {/* <Route path="/" element={<PrivacyPolicy/>} exact> */}
         <Route path="/" element={<Home/>} exact>
           <Route path="/" element={<Component />} />
           <Route path="/duel" element={<Duel />} />
