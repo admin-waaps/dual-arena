@@ -3,11 +3,15 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
 import { BrowserRouter } from "react-router-dom";
+import { SupportToggleProvider } from "./ContextApi/supportToogleContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
+  
   <BrowserRouter>
+  <SupportToggleProvider>
     <App />
+  </SupportToggleProvider>
   </BrowserRouter>
 );
 

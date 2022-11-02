@@ -22,7 +22,7 @@ import {
   useParams,
   Router,
 } from "react-router-dom";
-import Race from "./pages/Race";
+
 // import ProfilePage from "./components/profile_page/profile_page";
 // import Home from './pages/home';
 
