@@ -6,11 +6,11 @@ import Comp7 from "../components/Footer";
 const Duel = () => {
   return (
 
-      <div className="flex flex-col justify-center items-center h-[calc(100%+10rem)]">
-        <div className="mt-[40px] shadow-sm py-2">
+      <div className="flex flex-col justify-center items-center h-[calc(100%+10rem)] w-full ">
+        <div className="mt-[40px] shadow-sm  w-full ">
           <DuelBagHeader />
         </div>
-        <div className=" flex justify-center items-center flex-wrap mt-[20px] overflow-y-scroll ">
+        <div className=" flex justify-center items-center flex-wrap mt-[20px] overflow-y-scroll w-full border-2">
           <DuelBag />
           <DuelBag />
           <DuelBag />

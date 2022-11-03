@@ -1,8 +1,9 @@
 import React from 'react'
+import WheelBreadCrum from '../components/WheelBreadCrum'
 
 const Wheel = () => {
   return (
-    <div>Wheel</div>
+    <div className='mt-[40px]'><WheelBreadCrum/></div>
   )
 }
 

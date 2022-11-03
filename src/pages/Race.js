@@ -1,8 +1,11 @@
 import React from 'react'
+import RaceBreadCrum from '../components/RaceBreadCrum'
 
 const Race = () => {
   return (
-    <div>Race</div>
+    <div className='mt-[40px]'>
+      <RaceBreadCrum/>
+    </div>
   )
 }
 

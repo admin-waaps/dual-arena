@@ -1,8 +1,10 @@
 import React from 'react'
-
+import LootBreadCrum from '../components/LootBreadCrum'
 const Loot = () => {
   return (
-    <div>Loot</div>
+    <div className='mt-[40px]'>
+      <LootBreadCrum/>
+    </div>
   )
 }
 
