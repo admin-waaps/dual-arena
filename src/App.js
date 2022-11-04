@@ -22,16 +22,14 @@ import {
   useParams,
   Router,
 } from "react-router-dom";
-// import AdminUserPage from "./components/admin_userpage/admin_userpage";
+// import AdminGame from "./components/admin_game/admin_game";
 
-// import PrivacyPolicy from "./components/privacy_policy/privacy_policy";
-// import Home from './pages/home';
 
 function App() {
   return ( 
     <>
       <Routes>
-        {/* <Route path="/" element={<AdminUserPage/>} exact> */}
+        {/* <Route path="/" element={<AdminGame/>} exact> */}
         <Route path="/" element={<Home/>} exact>
           <Route path="/" element={<Component />} />
           <Route path="/duel" element={<Duel />} />
