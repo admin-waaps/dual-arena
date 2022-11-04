@@ -7,7 +7,6 @@ import "./profile_page.css";
 import ArrowUp from "../../assets/icons/arrowup.svg";
 import Coins from "../../assets/icons/coin.png";
 import Dorbeen from "../../assets/icons/dorbeen.png";
-import { Switch } from "antd";
 import {
   FaTimes,
   FaRedoAlt,
