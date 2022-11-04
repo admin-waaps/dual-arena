@@ -3,7 +3,7 @@ import { FaTimes } from "react-icons/fa";
 
 const SignOutModal = () => {
   return (
-    <div className="bg-[#0c0a12f2]  h-[600px] w-[100%]  flex items-center justify-center">
+    <div className="absolute bg-[#0c0a12f2]  h-[100vh] w-[100vw] flex items-center justify-center border-2">
     <div className="bg-[#1D1B3F] m-[10px] rounded-[16px]  w-[405px] h-[196px]">
       <div className="bg-[#191537]  h-[65px] rounded-t-[16px] flex items-center justify-between p-[20px]">
         <div className="text-[#fff]">Sign Out</div>

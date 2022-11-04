@@ -15,7 +15,7 @@ import poker from '../assets/icons/poker_card.png'
 import pokerchip from '../assets/icons/poker_chip_1.png' 
 import fortunewheel from '../assets/icons/fortune-wheel 1.png' 
 import flag from '../assets/icons/flag.png' 
-
+import './SideBar.css'
 
 // import Home from '../../public/images/home'
 
@@ -27,7 +27,7 @@ const Sidebar = () => {
 
   return (
 
-    <div className="Sidebar font-normal flex items-center flex-col  h-[688px] w-[86px] bg-[#23224A] rounded-[56px] text-[#6E6D90] ">
+    <div className="Sidebar font-normal flex items-center flex-col  h-[688px] w-[86px] bg-[#23224A] rounded-[56px] text-[#6E6D90]">
       
         <Link to='/' className="hover:text-white">
         <div className="flex flex-col items-center mt-7 text-sm cursor-pointer text-[#6E6D90] ">
@@ -94,10 +94,10 @@ const Sidebar = () => {
           >
           {/* <div className={`sec2 text-[#6E6D91] text-[${'50px'}]`}> */}
           
-         <Link to="/home"><AiFillDollarCircle className="text-[20px] cursor-pointer" /></Link>
+         <Link to="/profile"><AiFillDollarCircle className="text-[20px] cursor-pointer" /></Link>
          <Link to="/home"><BiLink className="text-[20px] cursor-pointer" /></Link>
-         <Link to="/home"><MdHelpCenter className="text-[20px] cursor-pointer" /></Link>
-         <Link to="/home"><HiUser className="text-[20px] cursor-pointer" /></Link>
+         <Link to="/support"><MdHelpCenter className="text-[20px] cursor-pointer" /></Link>
+         <Link to="/profile"><HiUser className="text-[20px] cursor-pointer" /></Link>
         
         </div>
       
