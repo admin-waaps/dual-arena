@@ -4,6 +4,10 @@ import coin from "../../assets/icons/coin.png";
 import copy from "../../assets/icons/copy.png";
 import dorbeen from "../../assets/icons/dorbeen.png";
 import "./profile_page.css";
+import ArrowUp from "../../assets/icons/arrowup.svg";
+import Coins from "../../assets/icons/coin.png";
+import Dorbeen from "../../assets/icons/dorbeen.png";
+import { Switch } from "antd";
 import {
   FaTimes,
   FaRedoAlt,
@@ -12,6 +16,8 @@ import {
   FaAngleLeft,
   FaAngleRight,
 } from "react-icons/fa";
+import { HiRefresh } from "react-icons/hi";
+import { useState } from "react";
 
 const ProfileUsername = () => {
   return (
@@ -27,7 +33,6 @@ const ProfileUsername = () => {
         <span className="text-[#BEBEDC] text-[12px] opacity-[0.3]">Joined</span>
         <div className="text-[#fff] text-[14px] font-[400]">07/27/2022</div>
       </div>
-      
 
       <div className="text-[#fff] mt-[20px] text-center">
         <div className="text-[#BEBEDC] text-[12px] opacity-[0.3]">
@@ -69,59 +74,55 @@ const ProfileUsername = () => {
 
 const General = () => {
   return (
-    <div className="w-[610px] h-[276px] rounded-[16px]">
-      <div className="bg-[#191537] h-[65px] rounded-t-[16px] flex items-center justify-between p-[20px]">
-        <div className="text-[#fff] text-[20px] font-[500] ">General</div>
-        <div>
-          <FaAngleUp className="text-[#fff]" />
+    <div className="grid  w-[610px] h-[276px]  rounded-[16px] overflow-hidden">
+      <div className="grid grid-cols-2 bg-[#191537] min-h-[50px]">
+        <div className="flex items-start p-[24px]">General</div>
+        <div className="flex justify-end items-center float-left p-[30px] text-xs">
+          <img src={ArrowUp} />
         </div>
       </div>
-
-      <div className="bg-[#23224A] h-[104px] flex">
-        <div className="text-[#fff] w-[50%]">
-          <div className="mt-[15px] w-[] flex justify-between border-2">
-            <span className="text-[#BEBEDC] text-[14px] font-[400]">Email</span>
-            <span className="text-[14px] text-[#4BD078] font-[400]">Verified</span>
+      <div className="grid grid-cols-2 grid-rows-2 bg-[#23224A] min-h-[50px] ">
+        <div className="grid items-start bg-[#23224A] px-[24px] py-[24px] space-y-[12px] border-b-[1px] border-b-[#353353]">
+          <div className="flex items-start text-[14px] text-[#BEBEDC] gap-[10px]">
+            <p className="opacity-[0.5]">Email</p>
+            <p className="text-[#4BD078]">Verified</p>
           </div>
-          <div className="text-[#BEBEDC] text-[14px] font-normal mt-[20px] w-[] flex justify-between border-2">
-            <span>example2002@gmail.com</span>
-            <img src={copy} alt="" className="cursor-pointer"/>
+          <div className="flex items-start text-[14px] text-[#BEBEDC]">
+            email@exmaple.com
           </div>
         </div>
-
-        <div className="w-[50%] border-2">
-          <div className="text-[#fff] mt-[15px] w-[] flex justify-around border-2">
-            <span className="text-[#BEBEDC]">Password</span>
-            {/* <span>Verified</span> */}
+        <div className="grid w-auto items-start bg-[#23224A] px-[24px] py-[32px] text-[14px] gap-[10px] border-b-[1px] border-b-[#353353]">
+          <div className="flex items-start text-[14px] text-[#BEBEDC] opacity-[0.5]">
+            Password
           </div>
-          <div className="text-[#fff] mt-[20px] w-[] flex justify-around border-2">
-            <span>.................</span>
-            <img src={copy} alt="" />
+          <div className="flex items-start text-[14px] text-[#BEBEDC] ">
+            ********
           </div>
         </div>
-      </div>
-      <hr />
-
-      <div className="bg-[#23224A] h-[104px] rounded-b-[16px] flex">
-        <div className="text-[#fff] w-[50%]">
-          <div className="mt-[15px] w-[70%] flex justify-around">
-            <span className="text-[#BEBEDC]">Game account link</span>
-            {/* <span>Verified</span> */}
+        <div className="grid items-start bg-[#23224A] px-[24px] py-[32px] text-[14px] gap-[10px] ">
+          <div className="flex items-start opacity-[0.5]">
+            Game account link
           </div>
-          <div className="text-[#fff] mt-[20px] w-[80%] flex justify-around">
-            <span>Not linked yet </span>
-            <img src={copy} alt="" />
-          </div>
+          <div className="flex items-start  text-[#BEBEDC] text-[14px]">Not linked yet</div>
         </div>
-
-        <div className="w-[50%]">
-          <div className="text-[#fff] mt-[15px] w-[60%] flex justify-around">
-            <span className="text-[#BEBEDC]">Bet Conformation</span>
-            {/* <span>Verified</span> */}
-          </div>
-          <div className="text-[#fff] mt-[20px] w-[50%] flex justify-around">
-            <img src={copy} alt="" />
-            <span>Enabled</span>
+        <div className="grid items-start bg-[#23224A] px-[24px] py-[32px] text-[14px] gap-[10px]">
+          <div className="flex items-start opacity-[0.5]">Bet Confirmation</div>
+          <div className="flex items-start  text-[#BEBEDC]">
+            <span className="">
+              <label
+                for="default-toggle"
+                class="inline-flex relative items-center cursor-pointer"
+              >
+                <input
+                  type="checkbox"
+                  value=""
+                  id="default-toggle"
+                  class="sr-only peer"
+                />
+                <div class="w-[24px] h-[14px] bg-gray-200 peer-focus:outline-none  rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-[10px] after:w-[10px] after:transition-all dark:border-gray-600 peer-checked:bg-[#575DE8]"></div>
+              </label>
+            <span className="text-[14px]">&nbsp; Enabled</span>
+            </span>
           </div>
         </div>
       </div>
@@ -130,122 +131,179 @@ const General = () => {
 };
 
 const Orders = () => {
+  let data = 0;
+  const [list, setList] = useState(data);
+
   return (
-    <div className="bg-[#23224A] w-[610px] h-[537px] border-[#191537] border-[1px] rounded-[16px]">
-      <div className="bg-[#191537] h-[65px] rounded-t-[16px] flex items-center justify-between p-[20px]">
-        <div className="text-[#fff]">Orders</div>
+    <div className=" w-[610px] h-[auto] rounded-2xl overflow-hidden">
+      <div className="header flex justify-between p-[24px] bg-[#191537]">
+        <div>Order</div>
         <div>
-          <FaAngleUp className="text-[#fff]" />
+          <img src={ArrowUp} />
         </div>
       </div>
-
-      <div className="bg-[#23224A] ">
-        <div className="mt-[15px] flex justify-between items-center">
-          <div className="ml-[30px] text-[#fff] flex justify-center items-center">
-            <div className="flex p-[12px]">
-              Any Kind
-              <FaAngleDown className="ml-[10px]" />
-            </div>
-            <div className="flex p-[12px]">
-              Any Kind
-              <FaAngleDown className="ml-[10px]" />
-            </div>
+      <div className="selectors flex justify-between py-[24px] bg-[#23224A]">
+        <div className="flex">
+          <div>
+            <select className="bg-[#23224A] text-[14px] px-4 border-r-4 border-r-[#23224A]">
+              <option>Any thing</option>
+              <option>Any thing</option>
+              <option>Any thing</option>
+              <option>Any thing</option>
+            </select>
           </div>
-          <div className="mr-[30px] text-[#fff] p-[12px]">
-            <FaRedoAlt />
+          <div>
+            <select className="bg-[#23224A] text-[14px] px-4 border-r-4 border-r-[#23224A]">
+              <option>Any thing</option>
+              <option>Any thing</option>
+              <option>Any thing</option>
+              <option>Any thing</option>
+            </select>
           </div>
         </div>
-
-        <table className="bg-[#23224A] mt-[35px] text-[#fff] w-[100%]">
-          <tr className="w-[100%]">
-            <td className="w-[150px] text-center">
-              <p className="text-[#BEBEDC] text-xs">2 min ago</p>
-              <p>Deposit</p>
+        <div className="px-[24px]">
+          <HiRefresh className="text-2xl font-thin" />
+        </div>
+      </div>
+      <div>
+        <table className="text-[14px] w-full h-[10px] overflow-y-scroll bg-[#23224A]">
+          <tr className=" border-b-[1px] w-full h-[87px] border-b-[#353353]">
+            <td className="p-5 ">
+              <tr className=" text-[12px] text-[#BEBEDC]">2 min ago</tr>
+              <tr className="">Deposit</tr>
             </td>
-            <td className="mt-[6px] flex justify-around items-center">
-              <img src={dorbeen} alt="" />
-              ABCD-EFGHIJK
+            <td className="">
+              <td className="">
+                <img src={Dorbeen} height={"10px"} width={"10px"} />
+              </td>
+              <td className="">ABCD-EFGH-IJKL</td>
             </td>
-            <td className="text-center">
-              <p className="m-auto w-[110px] flex justify-between items-center">
-                <img className="" src={coin} alt="" />
-                20.00(btc)
-              </p>
+            <td className="">
+              <td className="">
+                <img src={Coins} />
+              </td>
+              <td className="">2.00 (BTC)</td>
             </td>
-            <td className="w-[150px] text-center text-[#D04B4B]">Cancel</td>
+            <td className="">Cancel</td>
+          </tr>
+          <tr className=" border-b-[1px] w-full h-[87px] border-b-[#353353]">
+            <td className="p-5 ">
+              <tr className=" text-[12px] text-[#BEBEDC]">2 min ago</tr>
+              <tr className="">Deposit</tr>
+            </td>
+            <td className="">
+              <td className="">
+                <img src={Dorbeen} height={"10px"} width={"10px"} />
+              </td>
+              <td className="">ABCD-EFGH-IJKL</td>
+            </td>
+            <td className="">
+              <td className="">
+                <img src={Coins} />
+              </td>
+              <td className="">2.00 (BTC)</td>
+            </td>
+            <td className="">Cancel</td>
+          </tr>
+          <tr className=" border-b-[1px] w-full h-[87px] border-b-[#353353]">
+            <td className="p-5 ">
+              <tr className=" text-[12px] text-[#BEBEDC]">2 min ago</tr>
+              <tr className="">Deposit</tr>
+            </td>
+            <td className="">
+              <td className="">
+                <img src={Dorbeen} height={"10px"} width={"10px"} />
+              </td>
+              <td className="">ABCD-EFGH-IJKL</td>
+            </td>
+            <td className="">
+              <td className="">
+                <img src={Coins} />
+              </td>
+              <td className="">2.00 (BTC)</td>
+            </td>
+            <td className="">Cancel</td>
+          </tr>
+          <tr className=" border-b-[1px] w-full h-[87px] border-b-[#353353]">
+            <td className="p-5 ">
+              <tr className=" text-[12px] text-[#BEBEDC]">2 min ago</tr>
+              <tr className="">Deposit</tr>
+            </td>
+            <td className="">
+              <td className="">
+                <img src={Dorbeen} height={"10px"} width={"10px"} />
+              </td>
+              <td className="">ABCD-EFGH-IJKL</td>
+            </td>
+            <td className="">
+              <td className="">
+                <img src={Coins} />
+              </td>
+              <td className="">2.00 (BTC)</td>
+            </td>
+            <td className="">Cancel</td>
+          </tr>
+          <tr className=" border-b-[1px] w-full h-[87px] border-b-[#353353]">
+            <td className="p-5 ">
+              <tr className=" text-[12px] text-[#BEBEDC]">2 min ago</tr>
+              <tr className="">Deposit</tr>
+            </td>
+            <td className="">
+              <td className="">
+                <img src={Dorbeen} height={"10px"} width={"10px"} />
+              </td>
+              <td className="">ABCD-EFGH-IJKL</td>
+            </td>
+            <td className="">
+              <td className="">
+                <img src={Coins} />
+              </td>
+              <td className="">2.00 (BTC)</td>
+            </td>
+            <td className="">Cancel</td>
+          </tr>
+          <tr className=" border-b-[1px] w-full h-[87px] border-b-[#353353]">
+            <td className="p-5 ">
+              <tr className=" text-[12px] text-[#BEBEDC]">2 min ago</tr>
+              <tr className="">Deposit</tr>
+            </td>
+            <td className="">
+              <td className="">
+                <img src={Dorbeen} height={"10px"} width={"10px"} />
+              </td>
+              <td className="">ABCD-EFGH-IJKL</td>
+            </td>
+            <td className="">
+              <td className="">
+                <img src={Coins} />
+              </td>
+              <td className="">2.00 (BTC)</td>
+            </td>
+            <td className="">Cancel</td>
+          </tr>
+          <tr className=" border-b-[1px] w-full h-[87px] border-b-[#353353]">
+            <td className="p-5 ">
+              <tr className=" text-[12px] text-[#BEBEDC]">2 min ago</tr>
+              <tr className="">Deposit</tr>
+            </td>
+            <td className="">
+              <td className="">
+                <img src={Dorbeen} height={"10px"} width={"10px"} />
+              </td>
+              <td className="">ABCD-EFGH-IJKL</td>
+            </td>
+            <td className="">
+              <td className="">
+                <img src={Coins} />
+              </td>
+              <td className="">2.00 (BTC)</td>
+            </td>
+            <td className="">Cancel</td>
           </tr>
         </table>
-
-        <table className="bg-[#23224A] mt-[35px] text-[#fff] w-[100%]">
-          <tr className="w-[100%]">
-            <td className="w-[150px] text-center">
-              <p className="text-[#BEBEDC] text-xs">2 min ago</p>
-              <p>Deposit</p>
-            </td>
-            <td className="mt-[6px] flex justify-around items-center">
-              <img src={dorbeen} alt="" />
-              ABCD-EFGHIJK
-            </td>
-            <td className="text-center">
-              <p className="m-auto w-[110px] flex justify-between items-center">
-                <img className="" src={coin} alt="" />
-                20.00(btc)
-              </p>
-            </td>
-            <td className="w-[150px] text-center text-[#4BD078]">Approved</td>
-          </tr>
-        </table>
-
-        <table className="bg-[#23224A] mt-[35px] text-[#fff] w-[100%]">
-          <tr className="w-[100%]">
-            <td className="w-[150px] text-center">
-              <p className="text-[#BEBEDC] text-xs">2 min ago</p>
-              <p>Deposit</p>
-            </td>
-            <td className="mt-[6px] flex justify-around items-center">
-              <img src={dorbeen} alt="" />
-              ABCD-EFGHIJK
-            </td>
-            <td className="text-center">
-              <p className="m-auto w-[110px] flex justify-between items-center">
-                <img className="" src={coin} alt="" />
-                20.00(btc)
-              </p>
-            </td>
-            <td className="w-[150px] text-center text-[#D04B4B]">Cancel</td>
-          </tr>
-        </table>
-
-        <table className="bg-[#23224A] mt-[35px] text-[#fff] w-[100%]">
-          <tr className="w-[100%]">
-            <td className="w-[150px] text-center">
-              <p className="text-[#BEBEDC] text-xs">2 min ago</p>
-              <p>Deposit</p>
-            </td>
-            <td className="mt-[6px] flex justify-around items-center">
-              <img src={dorbeen} alt="" />
-              ABCD-EFGHIJK
-            </td>
-            <td className="text-center">
-              <p className="m-auto w-[110px] flex justify-between items-center">
-                <img className="" src={coin} alt="" />
-                20.00(btc)
-              </p>
-            </td>
-            <td className="w-[150px] text-center text-[#4BD078]">Approved</td>
-          </tr>
-        </table>
-
-        <div className="bg-[#23224A] mt-[20px] flex justify-between items-center">
-          <div className="text-[#fff] ml-[30px] p-[12px]">1-4 of 10</div>
-          <div className="text-[#fff] mr-[30px] flex justify-center items-center">
-            <div className="flex p-[12px]">
-              <FaAngleLeft className="ml-[10px]" />
-            </div>
-            <div className="flex p-[12px]">
-              <FaAngleRight className="ml-[10px]" />
-            </div>
-          </div>
+        <div className="h-[87px] w-full flex justify-between px-[24px] items-center text-[#6E6D90] text-[14px] bg-[#23224A]">
+          <div>1-4 of 10</div>
+          <div> {`< >`}</div>
         </div>
       </div>
     </div>
@@ -263,11 +321,15 @@ const Transactions = () => {
       </div>
 
       <div className="bg-[#23224A] ">
-        <div className="mt-[15px] flex justify-between items-center">
-          <div className="ml-[30px] text-[#fff] flex justify-center items-center">
-            <div className="flex p-[12px]">
-              Any Kind
-              <FaAngleDown className="ml-[10px]" />
+        <div className="flex justify-between items-center">
+          <div className="text-[#fff] flex justify-center items-center">
+            <div className="text-[14px] text-[#BEBEDC] mx-[10px] mt-[26px]">
+              <select className="focus:outline-none border-none bg-[#23224A] px-[8px]">
+                <option>Any thing</option>
+                <option>Any thing</option>
+                <option>Any thing</option>
+                <option>Any thing</option>
+              </select>
             </div>
           </div>
           <div className="mr-[30px] text-[#fff] p-[12px]">
@@ -297,104 +359,73 @@ const Transactions = () => {
 
 const Promotions = () => {
   return (
-    <div className="m-[20px] bg-[#23224A] w-[610px] h-[454px] border-[#191537] border-[1px] rounded-[16px]">
-      <div className="bg-[#191537] h-[65px] rounded-t-[16px] flex items-center justify-between p-[20px]">
-        <div className="text-[#fff]">Promotions</div>
+    <div className="mt-[100px] w-[610px] h-[auto] rounded-2xl overflow-hidden bg-[#23224A]">
+      <div className="header flex justify-between p-[24px] bg-[#191537]">
+        <div>Promotions</div>
         <div>
-          <FaAngleUp className="text-[#fff]" />
+          <img src={ArrowUp} />
         </div>
       </div>
-
-      <div className="bg-[#23224A] rounded-[16px]">
-        <div className="text-[#fff] mt-[15px] flex justify-around items-center">
-          <input
-            placeholder="Promocode"
-            className="text-[#BEBEDC] bg-[#2E2D58] flex items-center justify-center h-[38px] w-[412px] p-[20px] rounded-[31px] focus:outline-none"
-          />
-          <div className="bg-[#575DE8] flex items-center justify-center h-[38px] w-[153px] rounded-[31px]">
-            Use Promocode
+      <div className="selectors flex justify-between py-[24px] bg-[#23224A]">
+        <div className="flex justify-between w-full h-full px-[15px] ">
+          <div>
+            <input
+              type="text"
+              placeholder="Promocode"
+              className="bg-[#2E2D58] text-[#BEBEDC] text-[14px] rounded-full pl-[16px] py-[12px] w-[412px] h-[38px]"
+            />
+          </div>
+          <div>
+            <button class="text-white bg-[#575DE8] text-[14px] w-[143px] h-[38px] border-0  focus:outline-none hover:bg-indigo-600 rounded-full ">
+              Use Promocode
+            </button>
           </div>
         </div>
-
-        <table className="bg-[#23224A] mt-[29px] text-[#fff] w-[100%]">
-          <tr className="w-[100%]">
-            <td className="mt-[6px] flex justify-around items-center">
-              <img src={dorbeen} alt="" />
-              ABCD-EFGHIJK
+      </div>
+      <div>
+        <table className="text-[14px] w-full h-[10px] overflow-y-scroll">
+          <tr className=" border-b-[1px] w-full h-[87px] border-b-[#353353]">
+            <td className="p-5 ">
+              <tr className=" text-[12px] text-[#BEBEDC]">2 min ago</tr>
+              <tr className="">Deposit</tr>
             </td>
-            <td className="text-center">
-              <p>2 min ago</p>
+            <td className="">
+              <td className="">
+                <img src={Dorbeen} height={"10px"} width={"10px"} />
+              </td>
+              <td className="">ABCD-EFGH-IJKL</td>
             </td>
-            <td className="w-[310px]">
-              <p className="ml-[210px] w-[80px] flex justify-between items-center">
-                <img className="" src={coin} alt="" />
-                20.00
-              </p>
+            <td className="">
+              <td className="">
+                <img src={Coins} />
+              </td>
+              <td className="">2.00 (BTC)</td>
             </td>
+            <td className="">Cancel</td>
+          </tr>
+          <tr className=" border-b-[1px] w-full h-[87px] border-b-[#353353]">
+            <td className="p-5 ">
+              <tr className=" text-[12px] text-[#BEBEDC]">2 min ago</tr>
+              <tr className="">Deposit</tr>
+            </td>
+            <td className="">
+              <td className="">
+                <img src={Dorbeen} height={"10px"} width={"10px"} />
+              </td>
+              <td className="">ABCD-EFGH-IJKL</td>
+            </td>
+            <td className="">
+              <td className="">
+                <img src={Coins} />
+              </td>
+              <td className="">2.00 (BTC)</td>
+            </td>
+            <td className="">Cancel</td>
           </tr>
         </table>
-        <table className="bg-[#23224A] mt-[29px] text-[#fff] w-[100%]">
-          <tr className="w-[100%]">
-            <td className="mt-[6px] flex justify-around items-center">
-              <img src={dorbeen} alt="" />
-              ABCD-EFGHIJK
-            </td>
-            <td className="text-center">
-              <p>2 min ago</p>
-            </td>
-            <td className="w-[310px]">
-              <p className="ml-[210px] w-[80px] flex justify-between items-center">
-                <img className="" src={coin} alt="" />
-                20.00
-              </p>
-            </td>
-          </tr>
-        </table>
-        <table className="bg-[#23224A] mt-[29px] text-[#fff] w-[100%]">
-          <tr className="w-[100%]">
-            <td className="mt-[6px] flex justify-around items-center">
-              <img src={dorbeen} alt="" />
-              ABCD-EFGHIJK
-            </td>
-            <td className="text-center">
-              <p>2 min ago</p>
-            </td>
-            <td className="w-[310px]">
-              <p className="ml-[210px] w-[80px] flex justify-between items-center">
-                <img className="" src={coin} alt="" />
-                20.00
-              </p>
-            </td>
-          </tr>
-        </table>
-        <table className="bg-[#23224A] mt-[29px] text-[#fff] w-[100%]">
-          <tr className="w-[100%]">
-            <td className="mt-[6px] flex justify-around items-center">
-              <img src={dorbeen} alt="" />
-              ABCD-EFGHIJK
-            </td>
-            <td className="text-center">
-              <p>2 min ago</p>
-            </td>
-            <td className="w-[310px]">
-              <p className="ml-[210px] w-[80px] flex justify-between items-center">
-                <img className="" src={coin} alt="" />
-                20.00
-              </p>
-            </td>
-          </tr>
-        </table>
-
-        <div className="bg-[#23224A] mt-[14px] flex justify-between items-center rounded-[16px]">
-          <div className="text-[#fff] ml-[10px] p-[12px]">1-4 of 10</div>
-          <div className="text-[#fff] mr-[10px] flex justify-center items-center">
-            <div className="flex p-[12px]">
-              <FaAngleLeft className="ml-[10px]" />
-            </div>
-            <div className="flex p-[12px]">
-              <FaAngleRight className="ml-[10px]" />
-            </div>
-          </div>
+        <div className="h-[87px] w-full flex justify-between px-[24px] items-center text-[#6E6D90] text-[14px]">
+          <div>1-4 of 10</div>
+          <div> {`< >`}</div>
         </div>
       </div>
     </div>
@@ -403,15 +434,26 @@ const Promotions = () => {
 
 const ProfilePage = () => {
   return (
-    <div className="flex justify-between w-full h-full border-2 px-10">
-      <div>
+    <div className="grid grid-cols-3 h-[786px]">
+      <div className=" float-left ">
         <ProfileUsername />
       </div>
-      <div className="">
-        <General />
-        <Orders />
-        <Transactions />
-        <Promotions />
+      <div className="space-y-5 overflow-y-scroll col-span-2">
+        <div>
+          <General />
+        </div>
+
+        <div>
+          <Orders />
+        </div>
+
+        <div>
+          <Transactions />
+        </div>
+
+        <div>
+          <Promotions />
+        </div>
       </div>
     </div>
   );

@@ -53,6 +53,10 @@ const Component = () => {
           </div>
         </div>
       </div>
+
+      <div className="mt-[40px]">
+        <Comp6/>
+      </div>
     </center>
   );
 };

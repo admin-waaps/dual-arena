@@ -13,7 +13,7 @@ import Race from "./pages/Race";
 import Profile from "./pages/Profile";
 import Exchange from "./pages/Exchange";
 import Support from "./pages/Support";
-
+// import 'antd/dist/antd.css'
 import {
   Routes,
   Route,

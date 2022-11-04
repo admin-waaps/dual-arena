@@ -78,14 +78,14 @@ const Header = () => {
                 </div>
                 </Link>
 
-                <Link to='/signout'>
+                
                 <div className=" flex justify-center items-center cursor-pointer">
                   <span className="mr-3">
                     <img src={Group} alt="" className="" />
                   </span>
                   <span>Sign Out</span>
                 </div>
-                </Link>
+       
               </div>
             ) : null}
           </div>

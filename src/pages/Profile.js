@@ -3,7 +3,7 @@ import ProfilePage from "../components/profile_page/profile_page"
 
 const Profile = () => {
   return (
-    <div className='flex w-full h-full border-2'>
+    <div className=' mt-[40px] h-[786px] w-full '>
       <ProfilePage/>
     </div>
   )

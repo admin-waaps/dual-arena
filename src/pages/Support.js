@@ -1,11 +1,9 @@
-import React, { useEffect, useState } from 'react'
-import OpenTicket from '../components/Support/OpenTicket';
-import SupportBreadCrum from '../components/Support/SupportBreadCrum'
-import Tickets from '../components/Support/Tickets'
-
+import React, { useEffect, useState } from "react";
+import OpenTicket from "../components/Support/OpenTicket";
+import SupportBreadCrum from "../components/Support/SupportBreadCrum";
+import Tickets from "../components/Support/Tickets";
 
 const Support = () => {
-
   let [isTicket, setisTicket] = useState(false);
 
   const tickets = [
@@ -41,7 +39,7 @@ const Support = () => {
       update: "13 min ago",
       status: "Solved",
     },
-      
+
     {
       id: "#13-031",
       title: "I have an account issue",
@@ -50,7 +48,7 @@ const Support = () => {
       update: "13 min ago",
       status: "Solved",
     },
-      
+
     {
       id: "#13-0323",
       title: "I have an account issue",
@@ -59,7 +57,7 @@ const Support = () => {
       update: "13 min ago",
       status: "Solved",
     },
-      
+
     {
       id: "#13-03321",
       title: "I have an account issue",
@@ -76,47 +74,34 @@ const Support = () => {
       update: "13 min ago",
       status: "Solved",
     },
-
   ];
 
-  
   useEffect(() => {
-    
-    if(tickets.length > 0)
-    {
-      
-      setisTicket(true)
-      console.log(tickets.length)  
-      console.log(isTicket)  
+    if (tickets.length > 0) {
+      setisTicket(true);
+      console.log(tickets.length);
+      console.log(isTicket);
+    } else {
+      setisTicket(false);
     }
-    else
-    {
-      setisTicket(false)
-    }
-  
-  }, [isTicket,tickets.length])
-
-
+  }, [isTicket, tickets.length]);
 
   return (
     <>
-        <div className='mt-10'>
-        <SupportBreadCrum/>
-        </div>
-    <div className='relative mt-11 h-full overflow-auto'>
+      <div className="mt-10">
+        <SupportBreadCrum />
+      </div>
+      <div className="relative mt-11 h-full overflow-auto">
+        {isTicket ? (
+          <Tickets tickets={tickets} />
+        ) : (
+          <div className=" h-full translate-x-[0%] translate-y-[50%] justify-center items-center">
+            <p className="text-[#BEBEDC] text-[14px]">Ticket not found</p>
+          </div>
+        )}
+      </div>
+    </>
+  );
+};
 
-        {isTicket ? 
-      
-      <Tickets tickets={tickets}/>
-      :
-      <div className=' h-full translate-x-[0%] translate-y-[50%] justify-center items-center'>
-            <p className='text-[#BEBEDC] text-[14px]'>Ticket not found</p>
-        </div> 
-      }
-
-    </div>
-      </>
-  )
-}
-
-export default Support
+export default Support;
