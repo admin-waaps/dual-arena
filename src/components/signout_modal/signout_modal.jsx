@@ -1,7 +1,7 @@
 import { FaTimes } from "react-icons/fa";
 
 
-const SignOutModal = () => {
+const SignOutModal = (props) => {
   return (
     <div className="absolute bg-[#0c0a12f2]  h-[100vh] w-[100vw] flex items-center justify-center border-2">
     <div className="bg-[#1D1B3F] m-[10px] rounded-[16px]  w-[405px] h-[196px]">
@@ -16,7 +16,7 @@ const SignOutModal = () => {
       </div>
 
       <div className="mt-[20px] text-[#fff] flex items-center justify-center justify-around">
-        <button className="bg-[#23224A] h-[38px] w-[174px] rounded-[31px]">Cancel</button>
+        <button className="bg-[#23224A] h-[38px] w-[174px] rounded-[31px]" onClick={()=>{props.setIsSignoutOpen(false)}}>Cancel</button>
         <button  className="bg-[#575DE8] h-[38px] w-[174px] rounded-[31px]">SignOut</button>
       </div>
 

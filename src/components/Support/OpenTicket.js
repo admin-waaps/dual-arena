@@ -3,14 +3,15 @@ import { SupportToggleContext } from '../../ContextApi/supportToogleContext'
 
 const OpenTicket = (props) => {
 
-  let [isOpen, setIsOpen] = useContext(SupportToggleContext)
+  // let [isOpen, setIsOpen] = useContext(SupportToggleContext)
 
-  console.log("SupportToggleContext : " + isOpen)
+  // console.log("SupportToggleContext : " + isOpen)
   return (
-    <div className='w-[603px] h-[555px] rounded-3xl overflow-hidden font-normal'>
+    <div className='absolute w-[603px] h-[555px] rounded-3xl overflow-hidden font-normal'>
       <div className='ticketHeader w-full h-[56px] bg-[#191537] flex justify-between items-center overflow-hidden px-[16px]'>
+      <button onClick={()=>{props.ToggleOpenTicket(false)}}>&nbsp;X&nbsp;</button>
         <p>Open Ticket</p>
-        <button onClick={setIsOpen(!isOpen)}>x</button>
+        {/* <button onClick={setIsOpen(!isOpen)}>x</button> */}
         </div>
       <div className='ticketBody w-full h-[auto] bg-[#1D1B3F] flex flex-col justify-center items-center space-y-[16px] text-[14px] font-normal pt-[23px] px-[22px]'>
         <select className='bg-[#23224A] w-full h-[38px] rounded-full pl-[12px] border-r-[17px] border-r-[#23224A]'>

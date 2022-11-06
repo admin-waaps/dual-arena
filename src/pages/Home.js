@@ -12,9 +12,29 @@ import {BsFillChatLeftTextFill} from 'react-icons/bs'
 
 const Home = () => {
 
-  const [isSignOut, setisSignOut] = useState(false)
-  const [isChat, setIsChat] = useState()
-  const ref = useRef()
+  let transition = 'translate-x-full'
+  let chatClass = 'translate-x-0'
+  // let chatClass = 'translate-x-0'
+  // const [isSignOut, setisSignOut] = useState(true)
+  
+  
+  const chat = useRef()
+  const toggleChat = () => {
+    console.log("toggle chat")
+    console.log(chat.current.classList.contains(chatClass))
+    console.log(chat.current.classList.contains(chatClass))
+
+    if (chat.current.classList.contains(chatClass)) {
+      chat.current.classList.remove(chatClass)
+      chat.current.classList.add(transition)
+      chat.current.classList.add("hidden")
+      // chat.current.classList.add("hidden")
+    } else if (!chat.current.classList.contains(chatClass)) {
+      chat.current.classList.remove(transition)
+      chat.current.classList.remove("hidden")
+      chat.current.classList.add(chatClass)
+    }
+  }
 
   return (
 
@@ -35,8 +55,8 @@ const Home = () => {
 
         {/* content */}
 
-        <div className="gap w-[80px] "></div>
-        <div className="h-[100vh] w-full px-10 mt-2">
+        <div className="gap w-[20px] "></div>
+        <div className="h-[100vh] w-[calc(100%-500px)] px-10 mt-2">
           <div className="h-[30px]">
             <Header />
           </div>
@@ -49,13 +69,22 @@ const Home = () => {
             <Footer />
           </div>
         </div>
-        <div className="gap w-[80px] "></div>
+        <div className="gap w-[50px] "></div>
 
         {/* chat */}
 
-        {""}
-        <div className="h-auto w-auto float-right">
-          <Chat />
+
+        <div className="overflow-x-hidden w-auto h-auto">
+          
+          <div className="w-auto h-auto transform transition-transform translate-x-0" ref={chat}>
+            <Chat/>
+          </div>
+
+          <div className=" flex justify-center items-center rounded-full h-[50px] w-[50px] bg-[#191537] hover:bg-[#5a4dba] mt-[10px] mr-[10px] "  onClick={toggleChat}>
+              <BsFillChatLeftTextFill/>
+            </div>
+      
+        
         </div>
       </div>
     </center>

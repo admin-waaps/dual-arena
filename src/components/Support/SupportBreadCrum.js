@@ -6,11 +6,12 @@ import { SupportToggleContext } from '../../ContextApi/supportToogleContext';
 const SupportBreadCrum = () => {
 
   let [open, setOpen] = useContext(SupportToggleContext);
-  console.log(open)
-  const ToggleOpenTicket = () => {
-    setOpen(!open);
+  const ToggleOpenTicket = (status) => {
+    open = status 
+    setOpen(open);
   };
-
+  
+  console.log(open)
   return (
     <div className="bg-[#1D1B3F]  w-[100%] h-[40px] flex items-center justify-between ">
       <div className=" flex justify-around items-center h-[38px] w-[auto]">
@@ -45,18 +46,22 @@ const SupportBreadCrum = () => {
 
           {open ? (
             <div className="fixed w-[100vw] h-[100vh] bg-black bg-opacity-[50%] translate-x-[25%] translate-y-[40%] z-10 p-[10%]">
-              <OpenTicket/>
+              <OpenTicket ToggleOpenTicket={ToggleOpenTicket}/>
             </div>
-          ) : (
+          ) : "" 
+          }
             <button
               onClick={ToggleOpenTicket}
               className="bg-[#575DE8] text-[#fff] h-[36px] w-[103px] rounded-[31px] p-[5px] text-[12px]"
             >
               Open Tickets
             </button>
-          )}
         </div>
       </div>
+          {/* <div className="absolute flex justify-center items-center w-[100vw] h-[100vh] bg-black transform translate-x-[30%] translate-y-[33%]">
+
+          <OpenTicket/>
+          </div> */}
     </div>
   );
 };
