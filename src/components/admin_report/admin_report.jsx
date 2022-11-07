@@ -3,21 +3,21 @@ import { useState } from 'react';
 import { FaSearch, FaPlusCircle } from 'react-icons/fa';
 
 
-const AdminUserPage = () => {
+const AdminReport = () => {
 
     return (
         <div className="border-white border-[1px]">
 
             <div className='text-[#fff] bg-[#16163F] w-[1500px] h-[60px] flex justify-between items-center'>
                 <div className='text-[30px] border-white border-[1px] h-[42px]'>
-                    User
-                </div>
+                    Agent Report
+                </div> 
 
                 <div className='flex justify-between border-white border-[1px] w-[320px]'>
 
                     <div className='w-[150px] border-white border-[1px] rounded-[10px] flex'>
                         <div className='bg-[#171799] text-[15px] w-[101px] rounded-l-lg flex justify-center items-center'>
-                            Agent
+                            Player
                         </div>
 
                         <div className='border-[#0F0F37] border-[1px] '></div>
@@ -172,4 +172,4 @@ const AdminUserPage = () => {
     )
 }
 
-export default AdminUserPage
+export default AdminReport
