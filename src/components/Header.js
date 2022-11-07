@@ -1,21 +1,35 @@
 import React from "react";
-import { RiSettings4Fill } from "react-icons/ri";
-import Logo from "../assets/icons/logo.png";
 import coin from "../assets/icons/coin.png";
-import { useState } from "react";
+import Logo from "../assets/icons/logo.png";
 import user from "../assets/icons/user11.png";
 import Group from "../assets/icons/Group.png";
 import exchange from "../assets/icons/exchange11.png";
 import ring from "../assets/icons/ring.png";
+import ExchangeModal from "./header_comps/exchange_modal/exchange_modal";
+import SignoutModal from "./signout_modal/signout_modal";
+import { RiSettings4Fill } from "react-icons/ri";
+import { useState } from "react";
 import { CgEnter } from "react-icons/cg";
 import { Link } from "react-router-dom";
 
 const Header = () => {
+
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isExchangeOpen, setIsExchangeOpen] = useState(false);
+  const [isSignoutOpen, setIsSignoutOpen] = useState(false);
+
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
+  const handleExchange = (isOpen) =>{
+    setIsExchangeOpen(isOpen);
+  }
+  // const handleSignout = (a) =>{
+  //   setIsSignoutOpen(!isSignoutOpen)
+  // }
+console.log("isExchangeOpen"+isExchangeOpen);
+console.log("isSignoutOpen"+isSignoutOpen);
   return (
 
       <div className="header flex justify-between w-auto mt-2 items-center">
@@ -60,14 +74,14 @@ const Header = () => {
                 </div>
                 </Link>
 
-                <Link to='/exchange'>
+                
                 <div className=" flex justify-center items-center  cursor-pointer">
                   <span className="mr-3">
                     <img src={exchange} alt="" className="ml-[2px]" />
                   </span>
-                  <span>Exchange</span>
+                  <span onClick={()=>setIsExchangeOpen(true)}>Exchange</span>
                 </div>
-                </Link>
+                
 
                 <Link to='/support'>
                 <div className=" flex justify-center items-center cursor-pointer">
@@ -83,13 +97,16 @@ const Header = () => {
                   <span className="mr-3">
                     <img src={Group} alt="" className="" />
                   </span>
-                  <span>Sign Out</span>
+                  <span className="cursor-pointer " onClick={()=>setIsSignoutOpen(true)} >Sign Out</span>
                 </div>
        
               </div>
             ) : null}
           </div>
         </div>
+        
+        {isExchangeOpen ? <div  className="absolute "><ExchangeModal setIsExchangeOpen={setIsExchangeOpen}/></div> : ''}
+        {isSignoutOpen ? <div  className="absolute "><SignoutModal setIsSignoutOpen={setIsSignoutOpen}/></div> : ""}
       </div>
 
   );

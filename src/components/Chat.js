@@ -7,10 +7,10 @@ import { AiOutlineUser } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import MessageInput from "./message/message-input";
 
-const Chat = () => {
+const Chat = ({toggleChat}) => {
   return (
-    <div className="Chat relative flex flex-col text-white bg-[#191537] h-[100vh] w-[300px]">
-      <MessageHeader/>
+    <div className="Chat relative flex flex-col text-white bg-[#191537] h-[100vh] w-[300px]" >
+      <MessageHeader toggleChat={toggleChat} />
       <MessageBody/>
       <MessageInput/>
     </div>
