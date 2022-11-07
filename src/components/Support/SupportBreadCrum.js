@@ -1,17 +1,28 @@
 import { useContext, useState } from "react";
 import OpenTicket from "./OpenTicket";
 import { TbSword } from "react-icons/tb";
-import { SupportToggleContext } from '../../ContextApi/supportToogleContext';
+
+
+//  ************************** redux ******************************
+import { openTicket, closeTicket } from "../../redux/actions/support";
+import { SupportToggleContext } from "../../ContextApi/supportToogleContext";
+import TogglerReducer from "../../redux/reducers/support/supportToggler";
+import {useSelector, useDispatch} from "react-redux"
+//  ************************** redux ******************************
+
 
 const SupportBreadCrum = () => {
 
-  let [open, setOpen] = useContext(SupportToggleContext);
-  const ToggleOpenTicket = (status) => {
-    open = status 
-    setOpen(open);
-  };
+  const dispatch = useDispatch()
+  const toggle = useSelector(state => state.TogglerReducer);
   
-  console.log(open)
+  // let [open, setOpen] = useState(false);
+  // const ToggleOpenTicket = (status) => {
+  //   open = status 
+  //   setOpen(open);
+  // };
+  // console.log(open)
+  
   return (
     <div className="bg-[#1D1B3F]  w-[100%] h-[40px] flex items-center justify-between ">
       <div className=" flex justify-around items-center h-[38px] w-[auto]">
@@ -44,24 +55,15 @@ const SupportBreadCrum = () => {
             <option value="Whip">Whip</option>
           </select>
 
-          {open ? (
-            <div className="fixed w-[100vw] h-[100vh] bg-black bg-opacity-[50%] translate-x-[25%] translate-y-[40%] z-10 p-[10%]">
-              <OpenTicket ToggleOpenTicket={ToggleOpenTicket}/>
-            </div>
-          ) : "" 
-          }
             <button
-              onClick={ToggleOpenTicket}
+              onClick={()=> {{ dispatch(openTicket()); console.log("OPEN TICKET TOGGLE: " + toggle) }}}
               className="bg-[#575DE8] text-[#fff] h-[36px] w-[103px] rounded-[31px] p-[5px] text-[12px]"
             >
               Open Tickets
             </button>
         </div>
       </div>
-          {/* <div className="absolute flex justify-center items-center w-[100vw] h-[100vh] bg-black transform translate-x-[30%] translate-y-[33%]">
-
-          <OpenTicket/>
-          </div> */}
+     
     </div>
   );
 };

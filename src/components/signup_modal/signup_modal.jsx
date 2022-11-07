@@ -1,9 +1,14 @@
 import { FaTimes } from "react-icons/fa";
-
+import { useSelector, useDispatch } from "react-redux";
+import { hideSignup, showLogin, showSignup } from "../../redux/actions/auth";
 
 const SignUpModal = () => {
+
+  const ShowSignIn = useSelector(state => state.AuthReducer)
+  const dispatch = useDispatch();
+
   return (
-    <div className="bg-[#0c0a12f2]  h-[600px] w-[100%]  flex items-center justify-center">
+    <div className="h-[600px] w-[100%] flex items-center justify-center">
     <div className="bg-[#1D1B3F] m-[10px] rounded-[16px]  w-[405px] h-[562px]">
       <div className="bg-[#191537]  h-[65px] rounded-t-[16px] flex items-center justify-between p-[20px]">
         <div className="text-[#fff]">Sign Up</div>
@@ -46,7 +51,13 @@ const SignUpModal = () => {
       </div>
 
       <div className="mt-[13px] text-[#fff] flex items-center justify-center">
-        <button className="flex items-center justify-center bg-[#23224A] h-[38px] w-[361px] p-[20px] rounded-[31px]">I have and Account</button>
+        <button className="flex items-center justify-center bg-[#23224A] h-[38px] w-[361px] p-[20px] rounded-[31px]" 
+        
+        onClick={()=>{
+          dispatch(showSignup());
+          console.log("hideSignup")
+        }}
+        >I have and Account</button>
       </div>
 
 

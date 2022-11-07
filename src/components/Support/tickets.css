@@ -28,3 +28,8 @@ table .tr {
   text-align: left;
   padding: 20px;
 }
+
+.openTicket {
+  background: radial-gradient(100% 70% at 50% 100%, #181578 00%, #23224A 100%);
+
+}

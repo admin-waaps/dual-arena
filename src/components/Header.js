@@ -105,8 +105,8 @@ console.log("isSignoutOpen"+isSignoutOpen);
           </div>
         </div>
         
-        {isExchangeOpen ? <div  className="absolute translate-x-[16.5%]"><ExchangeModal setIsExchangeOpen={setIsExchangeOpen}/></div> : null}
-        {isSignoutOpen ? <div  className="absolute z-10"><SignoutModal setIsSignoutOpen={setIsSignoutOpen}/></div> : ""}
+        {isExchangeOpen ? <div  className="absolute "><ExchangeModal setIsExchangeOpen={setIsExchangeOpen}/></div> : ''}
+        {isSignoutOpen ? <div  className="absolute "><SignoutModal setIsSignoutOpen={setIsSignoutOpen}/></div> : ""}
       </div>
 
   );

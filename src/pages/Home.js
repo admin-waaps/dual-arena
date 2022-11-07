@@ -7,19 +7,41 @@ import Sidebar from "../components/Sidebar";
 import "../css/home.css";
 import Logo from "../assets/icons/logo.png";
 import SignOutModal from '../components/signout_modal/signout_modal'
-
 import {BsFillChatLeftTextFill} from 'react-icons/bs'
+import OpenTicket from "../components/Support/OpenTicket";
+import LoginModal from "../components/login_modal/login_modal";
+
+
+// redux
+import {openTicket} from "../redux/actions/support";
+import { signup } from "../redux/actions/auth";
+import { useSelector, useDispatch } from "react-redux";
+import SignUpModal from "../components/signup_modal/signup_modal";
+
 
 const Home = () => {
 
-  let transition = 'translate-x-full'
-  let chatClass = 'translate-x-0'
+
+  
+  const dispatch = useDispatch();
+  const ticketToggler = useSelector(state=> state.TogglerReducer);
+  const ShowSignUp = useSelector(state=> state.AuthReducer)
+  // const isLoggedIn = useSelector(state=> state.AuthReducer)
+  const isLoggedIn = false
+
+  console.log("ticket toggler: " + ticketToggler)
+
   // let chatClass = 'translate-x-0'
   // const [isSignOut, setisSignOut] = useState(true)
   
   
   const chat = useRef()
+  const chatButton = useRef()
+
   const toggleChat = () => {
+    let transition = 'translate-x-full'
+    let chatClass = 'translate-x-0'
+
     console.log("toggle chat")
     console.log(chat.current.classList.contains(chatClass))
     console.log(chat.current.classList.contains(chatClass))
@@ -28,18 +50,28 @@ const Home = () => {
       chat.current.classList.remove(chatClass)
       chat.current.classList.add(transition)
       chat.current.classList.add("hidden")
+      chatButton.current.classList.remove("hidden")
       // chat.current.classList.add("hidden")
     } else if (!chat.current.classList.contains(chatClass)) {
       chat.current.classList.remove(transition)
       chat.current.classList.remove("hidden")
       chat.current.classList.add(chatClass)
+      chatButton.current.classList.add("hidden")
     }
   }
+
+  // console.log("open"+openTicket)
 
   return (
 
     <center>
-      <div className="flex justify-between h-[auto] w-[auto] text-white ">
+
+      {ticketToggler ? <div className="absolute h-[100vh] w-full bg-black bg-opacity-50 z-10  flex justify-center items-center"> <OpenTicket/> </div> : null}
+      {isLoggedIn ? null: <div className="absolute h-[100vh] w-full bg-black bg-opacity-50 z-10  flex justify-center items-center"> <LoginModal/> </div>}
+      {ShowSignUp ?  <div className="absolute h-[100vh] w-full bg-black bg-opacity-50 z-10  flex justify-center items-center"> <SignUpModal/> </div> : null}
+      
+      
+      <div className="flex justify-between relative h-[auto] w-[auto] text-white ">
         {/* sidebar */}
 
         <div className="siderbar h-auto w-auto  px-5">
@@ -57,7 +89,7 @@ const Home = () => {
 
         <div className="gap w-[20px] "></div>
         <div className="h-[100vh] w-[calc(100%-500px)] px-10 mt-2">
-          <div className="h-[30px]">
+          <div className="realtive h-[30px]">
             <Header />
           </div>
 
@@ -74,15 +106,18 @@ const Home = () => {
         {/* chat */}
 
 
-        <div className="overflow-x-hidden w-auto h-auto">
+        <div className="overflow-x-hidden w-auto h-full">
           
           <div className="w-auto h-auto transform transition-transform translate-x-0" ref={chat}>
-            <Chat/>
+            <Chat onClick={toggleChat} toggleChat={toggleChat}/>
           </div>
 
-          <div className=" flex justify-center items-center rounded-full h-[50px] w-[50px] bg-[#191537] hover:bg-[#5a4dba] mt-[10px] mr-[10px] "  onClick={toggleChat}>
+          <div className="h-full w-20 ">
+
+          <div className=" flex justify-center items-center rounded-full h-[50px] w-[50px] bg-[#191537] hover:bg-[#5a4dba] mt-[10px] mr-[10px] transition duration-150 ease-in-out hover:h-[60px] hover:w-[60px] hidden "  onClick={toggleChat} ref={chatButton}>
               <BsFillChatLeftTextFill/>
             </div>
+          </div>
       
         
         </div>

@@ -1,9 +1,15 @@
 import { FaTimes } from "react-icons/fa";
-
+import { signup, showSignup, hideSignup, hideLogin, showLogin } from "../../redux/actions/auth";
+import { useSelector, useDispatch } from "react-redux";
 
 const LoginModal = () => {
+
+  const showSignUp = useSelector(state => state.AuthReducer);
+  const dispatch = useDispatch();
+
+
   return (
-    <div className="bg-[#0c0a12f2]  h-[600px] w-[100%]  flex items-center justify-center">
+    <div className="  h-[600px] w-[100%]  flex items-center justify-center text-[14px]">
     <div className="bg-[#1D1B3F] m-[10px] rounded-[16px]  w-[405px] h-[502px]">
       <div className="bg-[#191537]  h-[65px] rounded-t-[16px] flex items-center justify-between p-[20px]">
         <div className="text-[#fff]">Login</div>
@@ -39,8 +45,14 @@ const LoginModal = () => {
       </div>
 
       <div className="mt-[13px] text-[#fff] flex items-center justify-center">
-        <button className="flex items-center justify-center bg-[#23224A] h-[38px] w-[361px] p-[20px] rounded-[31px]">I don't have an account</button>
+        <button className="flex items-center justify-center bg-[#23224A] h-[38px] w-[361px] p-[20px] rounded-[31px]" 
+        onClick = {
+          ()=>{
+            dispatch(showLogin());
+            console.log("showLogin: " + showSignUp);
+         }} >I don't have an account</button>
       </div>
+
 
       <div className="mt-[13px] text-[#fff] flex items-center justify-center">
         <button className="flex items-center justify-center h-[38px] w-[361px] p-[20px] rounded-[31px]">Forgot Password</button>
