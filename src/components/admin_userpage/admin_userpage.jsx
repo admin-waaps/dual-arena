@@ -3,12 +3,12 @@ import { useState } from 'react';
 import { FaSearch, FaPlusCircle } from 'react-icons/fa';
 
 
-const AdminUserPage = () => {
+const AdminUser = () => {
 
     return (
         <div className="border-white border-[1px]">
 
-            <div className='text-[#fff] bg-[#16163F] w-[1500px] h-[60px] flex justify-between items-center'>
+            <div className='text-[#fff] w-[1500px] h-[60px] flex justify-between items-center'>
                 <div className='text-[30px] border-white border-[1px] h-[42px]'>
                     User
                 </div>
@@ -49,7 +49,7 @@ const AdminUserPage = () => {
                 <div className='leftChild border-white border-[1px]'>
 
                     <div className="border-white border-[1px] w-[1030px] flex justify-between items-center">
-                        <div className="bg-[#16163F ] border-[#16163F] border-[1px] w-[328px] h-[83px] rounded-[20px] flex justify-center items-center">
+                        <div className="bg-[#16163F] border-[#16163F] border-[1px] w-[328px] h-[83px] rounded-[20px] flex justify-center items-center">
                             <div
                                 className="border-[#16163F] border-[1px] w-[286px] h-[54px] rounded-[10px] flex justify-center items-center">
 
@@ -65,7 +65,7 @@ const AdminUserPage = () => {
                             </div>
                         </div>
 
-                        <div className="bg-[#16163F ] border-[#16163F] border-[1px] w-[674px] h-[83px] rounded-[20px] flex justify-center items-center">
+                        <div className="bg-[#16163F] border-[#16163F] border-[1px] w-[674px] h-[83px] rounded-[20px] flex justify-center items-center">
                             <>
                                 <div className='bg-[#1B1B85] w-[150px] m-[6px] h-[54px] rounded-[10px] flex justify-center items-center text-[#fff]'>
                                     Everyone
@@ -172,4 +172,4 @@ const AdminUserPage = () => {
     )
 }
 
-export default AdminUserPage
+export default AdminUser;
