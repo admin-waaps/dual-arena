@@ -9,7 +9,7 @@ const AuthReducer = function(state = false, action)
        
         case "HIDE_LOGIN":
             console.log("IS_LOGIN_REDUCER");
-            return true;
+            return false;
 
         case "REGISTER":
             console.log("REGISTER_REDUCER");
@@ -18,14 +18,25 @@ const AuthReducer = function(state = false, action)
         case "IS_REGISTERED":
             console.log("IS_REGISTERED_REDUCER");
             return false;
-            
+        
+        
+            //  SIGN_UP  
         case "SHOW_SIGNUP":
             console.log("SHOW_SIGNUP_REDUCER");
             return true;
     
         case "HIDE_SIGNUP":
             console.log("HIDE_SIGNUP_REDUCER");
+            return false;
+
+        // FORGOT PASSWORD
+        case "FORGOT_PASSWORD":
+            console.log("HIDE_SIGNUP_REDUCER");
             return true;
+
+        case "HIDE_FORGOT_PASSWORD":
+            console.log("HIDE_SIGNUP_REDUCER");
+            return false;
     
         default: return state=false
     }

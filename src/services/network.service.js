@@ -1,11 +1,21 @@
 import ApiService from "./api.service";
-const apiService = new ApiService();
 import UtilityService from "./utility.service";
+
+const apiService = new ApiService();
 const utilityService = new UtilityService();
 
 export default class NetworkService {
 
     constructor() { }
+
+
+    login(data){
+        return "ABCD";
+    }
+
+    register(data){
+        return this.axiosPostResponse('register', data);
+    }
 
 
 

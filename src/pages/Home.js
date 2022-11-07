@@ -10,13 +10,15 @@ import SignOutModal from '../components/signout_modal/signout_modal'
 import {BsFillChatLeftTextFill} from 'react-icons/bs'
 import OpenTicket from "../components/Support/OpenTicket";
 import LoginModal from "../components/login_modal/login_modal";
+import SignUpModal from "../components/signup_modal/signup_modal";
+import RecoverModal from "../components/recover_modal/recover_modal";
+
 
 
 // redux
 import {openTicket} from "../redux/actions/support";
 import { signup } from "../redux/actions/auth";
 import { useSelector, useDispatch } from "react-redux";
-import SignUpModal from "../components/signup_modal/signup_modal";
 
 
 const Home = () => {
@@ -26,7 +28,7 @@ const Home = () => {
   const dispatch = useDispatch();
   const ticketToggler = useSelector(state=> state.TogglerReducer);
   const ShowSignUp = useSelector(state=> state.AuthReducer)
-  // const isLoggedIn = useSelector(state=> state.AuthReducer)
+  const forgotPassword = useSelector(state => state.AuthReducer)
   const isLoggedIn = false
 
   console.log("ticket toggler: " + ticketToggler)
@@ -68,6 +70,7 @@ const Home = () => {
 
       {ticketToggler ? <div className="absolute h-[100vh] w-full bg-black bg-opacity-50 z-10  flex justify-center items-center"> <OpenTicket/> </div> : null}
       {isLoggedIn ? null: <div className="absolute h-[100vh] w-full bg-black bg-opacity-50 z-10  flex justify-center items-center"> <LoginModal/> </div>}
+      {forgotPassword ? <div className="absolute h-[100vh] w-full bg-black bg-opacity-50 z-10  flex justify-center items-center"> <RecoverModal/> </div>  : null}
       {ShowSignUp ?  <div className="absolute h-[100vh] w-full bg-black bg-opacity-50 z-10  flex justify-center items-center"> <SignUpModal/> </div> : null}
       
       

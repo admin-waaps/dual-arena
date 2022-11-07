@@ -1,12 +1,17 @@
 import { FaTimes } from "react-icons/fa";
+import { useDispatch } from "react-redux";
+import {hideforgotPassword} from "../../redux/actions/auth"
 
-const RecoverModal = () => {
+const RecoverModal =function() {
+  const dispatch = useDispatch()
   return (
-    <div className="bg-[#0c0a12f2]  h-[600px] w-[100%] flex items-center justify-center">
+    <div className="h-[600px] w-[100%] flex items-center justify-center text-[14px]">
     <div className="bg-[#1D1B3F] m-[10px] rounded-[16px]  w-[405px] h-[220px]">
       <div className="bg-[#191537]  h-[65px] rounded-t-[16px] flex items-center justify-between p-[20px]">
         <div className="text-[#fff]">Recover Password</div>
-        <div> 
+        <div onClick={()=>{
+          dispatch(hideforgotPassword()) 
+          }}> 
             <FaTimes className="text-[#fff]"/>
         </div>
       </div>

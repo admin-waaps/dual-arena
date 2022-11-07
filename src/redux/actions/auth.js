@@ -21,6 +21,7 @@ export const closeTicket =  function()
     };
 }
 
+// SIGNUP
 export const showSignup = function()
 {
     return{
@@ -34,6 +35,9 @@ export const hideSignup = function()
         type: "HIDE_SIGNUP"
     }
 }
+
+
+// LOGIN
 export const showLogin= function()
 {
     return{
@@ -45,5 +49,18 @@ export const hideLogin = function()
 {
     return{
         type: "HIDE_LOGIN"
+    }
+}
+
+export const forgotPassword = function()
+{
+    return{
+        type: "FORGOT_PASSWORD"
+    }
+}
+export const hideforgotPassword = function()
+{
+    return{
+        type: "HIDE_FORGOT_PASSWORD"
     }
 }

@@ -1,6 +1,6 @@
 import { FaTimes } from "react-icons/fa";
 import { useSelector, useDispatch } from "react-redux";
-import { hideSignup, showLogin, showSignup } from "../../redux/actions/auth";
+import { hideSignup, showLogin, showSignup, signup } from "../../redux/actions/auth";
 
 const SignUpModal = () => {
 
@@ -54,7 +54,8 @@ const SignUpModal = () => {
         <button className="flex items-center justify-center bg-[#23224A] h-[38px] w-[361px] p-[20px] rounded-[31px]" 
         
         onClick={()=>{
-          dispatch(showSignup());
+          // dispatch(signup()); 
+          dispatch(hideSignup()); 
           console.log("hideSignup")
         }}
         >I have and Account</button>
