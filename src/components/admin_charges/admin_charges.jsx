@@ -6,16 +6,16 @@ import { FaSearch, FaPlusCircle, FaRegCalendarAlt, FaClock, FaUser, FaInfoCircle
 const AdminCharges = () => {
 
     return (
-        <div className="border-white border-[1px]">
+        <div className=" ">
 
-            <div className='text-[#fff] bg-[#16163F] w-[1500px] h-[60px] flex justify-between items-center'>
-                <div className='text-[30px] border-white border-[1px] h-[42px]'>
+            <div className='text-[#fff] w-[1500px] h-[60px] flex justify-between items-center'>
+                <div className='text-[30px]   h-[42px]'>
                     Charges And Withdrawals
                 </div>
 
-                <div className='flex justify-between border-white border-[1px] w-[320px]'>
+                <div className='flex justify-between   w-[320px]'>
 
-                    <div className='w-[150px] border-white border-[1px] rounded-[10px] flex'>
+                    <div className='w-[150px]   rounded-[10px] flex'>
                         <div className='bg-[#171799] text-[15px] w-[101px] rounded-l-lg flex justify-center items-center'>
                             Agent
                         </div>
@@ -28,7 +28,7 @@ const AdminCharges = () => {
                         </div>
                     </div>
 
-                    <div className='w-[150px] border-white border-[1px] rounded-[10px] flex'>
+                    <div className='w-[150px]   rounded-[10px] flex'>
                         <div className='bg-[#171799] text-[15px] w-[101px] rounded-l-lg flex justify-center items-center'>
                             Agent
                         </div>
@@ -44,12 +44,12 @@ const AdminCharges = () => {
                 </div>
             </div>
 
-            <div className='parent flex w-[1500px] mt-[55px] border-white border-[1px]'>
+            <div className='parent flex w-[1500px] mt-[55px]  '>
 
-                <div className='leftChild border-white border-[1px]'>
+                <div className='leftChild  '>
 
 
-                    <div className="border-white border-[1px] w-[1033px] flex items-center justify-evenly">
+                    <div className="  w-[1033px] flex items-center justify-evenly">
                         <div className="text-[#fff] text-[18px] bg-[#16163F] border-[#0F0F37] border-[1px] w-[243px] h-[114px] rounded-[20px]">
                             <div className='mt-[10px] ml-[19px]'>Start Date</div>
                             <div className='mt-[5px] w-[205px] h-[54px] m-auto rounded-[10px] flex justify-evenly items-center'>
@@ -117,16 +117,13 @@ const AdminCharges = () => {
 
 
 
-                    <div className="border-white border-[1px] w-[1033px] flex items-center justify-evenly">
-                        <div className='w-[205px] h-[54px] m-auto mt-[30px] rounded-[10px] flex justify-evenly items-center'>
-                            <div
-                                className='w-[150px]'>
-                                <div type="text" className="text-[18px] bg-[#1B1B85] rounded-l-lg px-[20px] w-[153px] h-[54px] flex justify-center items-center text-[#fff]">
-                                    Player
-                                </div>
+                    <div className="  w-[1033px] flex items-center justify-around">
+                        <div className='w-[205px] h-[54px] rounded-[10px] flex justify-evenly items-center'>
+                            <div type="text" className="text-[18px] bg-[#1B1B85] rounded-l-lg px-[20px] w-[150px] h-[54px] flex justify-center items-center text-[#fff]">
+                                Player
                             </div>
                             <div className='border-[#1818A1] border-[1px] rounded-r-lg'></div>
-                            <div className='bg-[#1B1B85] w-[52px] h-[54px] rounded-r-lg flex justify-center items-center text-[#fff]'>
+                            <div className='bg-[#1B1B85] w-[49px] h-[54px] rounded-r-lg flex justify-center items-center text-[#fff]'>
                                 <select className='text-[#fff] bg-[#1B1B85] mr-[10px]'>
                                     <option value="" className=''></option>
                                     <option value="">3</option>
@@ -138,27 +135,25 @@ const AdminCharges = () => {
 
                         <div className="border-[#16163F] border-[1px] w-[286px] h-[54px] rounded-[10px] flex justify-center items-center">
 
-                            <div
-                                className='bg-[#1B1B85] w-[52px] h-[54px] rounded-l-lg flex justify-center items-center text-[#fff]'>
+                            <div className='bg-[#1B1B85] w-[52px] h-[54px] rounded-l-lg flex justify-center items-center text-[#fff]'>
                                 <FaUser />
                             </div>
                             <div className='border-[#0F0F37] border-[1px] rounded-l-lg'></div>
 
-                            <div
-                                className=''>
+                            <div className='w-[234px]'>
                                 <input type="text" placeholder="User Name" className="bg-[#1B1B85] rounded-r-lg text-lg px-[20px] w-[234px] h-[54px] flex justify-center items-center text-[#fff] focus:outline-none" />
                             </div>
                         </div>
 
 
-                        <div className='text-[#fff] border-white border-[1px] w-[150px] flex justify-evenly items-center'>
+                        <div className='text-[#fff]   w-[107px] flex justify-evenly items-center'>
                             <span className='bg-[#B1A308] w-[18px] h-[23px] rounded-[2px] border-[#B1A308] border-[1px]'></span>
                             <span className=''>Direct</span>
                             <FaInfoCircle />
 
                         </div>
 
-                        <div className='text-[#fff] border-white border-[1px] w-[160px] flex justify-evenly items-center'>
+                        <div className='text-[#fff]   w-[123px] flex justify-evenly items-center'>
                             <span className='bg-[#B1A308] w-[18px] h-[23px] rounded-[2px] border-[#B1A308] border-[1px]'></span>
                             <span className=''>Received</span>
                             <FaInfoCircle />
@@ -166,7 +161,7 @@ const AdminCharges = () => {
                         </div>
 
 
-                        <div className='bg-gradient-to-r from-[#B1A308] to-[#8D790F] text-[#fff] border-white border-[1px] w-[251px] h-[54px] rounded-[10px] flex justify-center items-center'>
+                        <div className='bg-gradient-to-r from-[#B1A308] to-[#8D790F] text-[#fff]   w-[251px] h-[54px] rounded-[10px] flex justify-center items-center'>
                             <button>Submit</button>
                         </div>
                     </div>
@@ -178,8 +173,8 @@ const AdminCharges = () => {
 
 
 
-                  
-                    <div className='border-white border-[1px] mt-[20px] rounded-[20px] h-[140px] w-[1033px]'>
+
+                    <div className='  mt-[20px] rounded-[20px] h-[140px] w-[1033px]'>
                         <div className="bg-[#0F0F37] border-[#16163F] rounded-t-[20px] border-[1px] w-[1030px] h-[56px] flex items-center justify-around">
 
                             <div className='w-[150px] h-[54px] rounded-t-lg flex justify-center items-center text-[#fff]'>
@@ -208,7 +203,7 @@ const AdminCharges = () => {
                     </div>
 
 
-                    <div className='border-white border-[1px] w-[1033px] mt-[20px] flex justify-between items-center'>
+                    <div className='  w-[1033px] mt-[20px] flex justify-between items-center'>
                         <div className='bg-[#16163F] text-[#fff] border-[#16163F] border-[1px] w-[242px] h-[54px] rounded-[10px] flex justify-center items-center'>
                             <div className='m-[10px] text-lg'>
                                 Show

@@ -6,16 +6,16 @@ import { FaSearch, FaPlusCircle } from 'react-icons/fa';
 const AdminPlayer = () => {
 
     return (
-        <div className="border-white border-[1px]">
+        <div className="">
 
-            <div className='text-[#fff] bg-[#16163F] w-[1500px] h-[60px] flex justify-between items-center'>
-                <div className='text-[30px] border-white border-[1px] h-[42px]'>
+            <div className='text-[#fff] w-[1500px] h-[60px] flex justify-between items-center'>
+                <div className='text-[30px]  h-[42px]'>
                     Player Report Users
                 </div> 
 
-                <div className='flex justify-between border-white border-[1px] w-[320px]'>
+                <div className='flex justify-between  w-[320px]'>
 
-                    <div className='w-[150px] border-white border-[1px] rounded-[10px] flex'>
+                    <div className='w-[150px]  rounded-[10px] flex'>
                         <div className='bg-[#171799] text-[15px] w-[101px] rounded-l-lg flex justify-center items-center'>
                             Player
                         </div>
@@ -28,7 +28,7 @@ const AdminPlayer = () => {
                         </div>
                     </div>
 
-                    <div className='w-[150px] border-white border-[1px] rounded-[10px] flex'>
+                    <div className='w-[150px]  rounded-[10px] flex'>
                         <div className='bg-[#171799] text-[15px] w-[101px] rounded-l-lg flex justify-center items-center'>
                             Agent
                         </div>
@@ -44,12 +44,12 @@ const AdminPlayer = () => {
                 </div>
             </div>
             
-            <div className='parent flex w-[1500px] mt-[55px] border-white border-[1px]'>
+            <div className='parent flex w-[1500px] mt-[55px] '>
 
-                <div className='leftChild border-white border-[1px]'>
+                <div className='leftChild '>
 
-                    <div className="border-white border-[1px] w-[1030px] flex justify-between items-center">
-                        <div className="bg-[#16163F ] border-[#16163F] border-[1px] w-[328px] h-[83px] rounded-[20px] flex justify-center items-center">
+                    <div className=" w-[1030px] flex justify-between items-center">
+                        <div className="bg-[#16163F] border-[#16163F] border-[1px] w-[328px] h-[83px] rounded-[20px] flex justify-center items-center">
                             <div
                                 className="border-[#16163F] border-[1px] w-[286px] h-[54px] rounded-[10px] flex justify-center items-center">
 
@@ -65,7 +65,7 @@ const AdminPlayer = () => {
                             </div>
                         </div>
 
-                        <div className="bg-[#16163F ] border-[#16163F] border-[1px] w-[674px] h-[83px] rounded-[20px] flex justify-center items-center">
+                        <div className="bg-[#16163F] border-[#16163F] border-[1px] w-[674px] h-[83px] rounded-[20px] flex justify-center items-center">
                             <>
                                 <div className='bg-[#1B1B85] w-[150px] m-[6px] h-[54px] rounded-[10px] flex justify-center items-center text-[#fff]'>
                                     Everyone
@@ -84,7 +84,7 @@ const AdminPlayer = () => {
                         </div>
                     </div>
 
-                    <div className='border-white border-[1px] mt-[20px] rounded-[20px] h-[140px] w-[1033px]'>
+                    <div className=' mt-[20px] rounded-[20px] h-[140px] w-[1033px]'>
                         <div className="bg-[#0F0F37] border-[#16163F] rounded-t-[20px] border-[1px] w-[1030px] h-[56px] flex items-center justify-around">
 
                             <div className='w-[150px] h-[54px] rounded-t-lg flex justify-center items-center text-[#fff]'>
@@ -113,7 +113,7 @@ const AdminPlayer = () => {
                     </div>
 
 
-                    <div className='border-white border-[1px] w-[1033px] mt-[20px] flex justify-between items-center'>
+                    <div className=' w-[1033px] mt-[20px] flex justify-between items-center'>
                         <div className='bg-[#16163F] text-[#fff] border-[#16163F] border-[1px] w-[242px] h-[54px] rounded-[10px] flex justify-center items-center'>
                             <div className='m-[10px] text-lg'>
                                 Show
