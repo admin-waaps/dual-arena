@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Link, Outlet } from "react-router-dom";
 import Chat from "../components/Chat";
 import Header from "../components/Header";
@@ -22,14 +22,35 @@ import { useSelector, useDispatch } from "react-redux";
 
 
 const Home = () => {
-
-
+  
+  
+  const [isToken, setToken] = useState(false)
   
   const dispatch = useDispatch();
   const ticketToggler = useSelector(state=> state.TogglerReducer);
   const ShowSignUp = useSelector(state=> state.AuthReducer)
   const forgotPassword = useSelector(state => state.AuthReducer)
-  const isLoggedIn = false
+  let isLoggedIn = false
+  
+  
+  // localStorage.removeItem("_token")
+  
+  const token = localStorage.getItem("_token");
+  
+  useEffect(() => {
+    console.log("HOME useEffect")
+    if(token)
+    {
+      console.log("useEffect token : "+ token)
+        setToken(true)
+        isLoggedIn = true;
+        console.log("istoken:"+isToken)
+      }
+      
+    }, [])
+    
+    
+
 
   console.log("ticket toggler: " + ticketToggler)
 
@@ -68,10 +89,10 @@ const Home = () => {
 
     <center>
 
-      {ticketToggler ? <div className="absolute h-[100vh] w-full bg-black bg-opacity-50 z-10  flex justify-center items-center"> <OpenTicket/> </div> : null}
-      {isLoggedIn ? null: <div className="absolute h-[100vh] w-full bg-black bg-opacity-50 z-10  flex justify-center items-center"> <LoginModal/> </div>}
+      {isToken ? null: <div className="absolute h-[100vh] w-full bg-black bg-opacity-50 z-10  flex justify-center items-center"> <LoginModal/> </div>}
       {forgotPassword ? <div className="absolute h-[100vh] w-full bg-black bg-opacity-50 z-10  flex justify-center items-center"> <RecoverModal/> </div>  : null}
       {ShowSignUp ?  <div className="absolute h-[100vh] w-full bg-black bg-opacity-50 z-10  flex justify-center items-center"> <SignUpModal/> </div> : null}
+      {ticketToggler ? <div className="absolute h-[100vh] w-full bg-black bg-opacity-50 z-10  flex justify-center items-center"> <OpenTicket/> </div> : null}
       
       
       <div className="flex justify-between relative h-[auto] w-[auto] text-white ">

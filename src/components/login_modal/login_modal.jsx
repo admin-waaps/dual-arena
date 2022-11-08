@@ -14,24 +14,38 @@ const LoginModal = () => {
 
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
+  const [rememberme, setRememberme] = useState("")
+  const [err, setErr] = useState("") 
 
   const handlelogin = async function()
   {
-    let res = await networkService.login(email);
-    console.log("res: "+res)
+    console.log("handleLogin")
+    let credentials = {email, password}
+    let res = await networkService.login(credentials);
+    if(res.bool == false)
+    {
+      setErr(res);
+      console.log("response: " + JSON.stringify(res))
+    }
+    console.log(res.token.token)
+    localStorage.setItem("_token", res.token.token)
+    
   }
 
 
-  // useEffect(() => {
+  useEffect(() => {
 
-  //   console.log(email);
-  //   console.log(password)
+    console.log("login_modal useEffect")
+    if(localStorage.getItem('_token'))
+    {
+      // dispatch(hideLogin())
+    }
 
-  // }, [email, password])
+  }, [])
   
 
   return (
-    <div className="  h-[600px] w-[100%]  flex items-center justify-center text-[14px]">
+    <div className="  h-[600px] w-[100%]  flex  justify-around text-[12px]">
     <div className="bg-[#1D1B3F] m-[10px] rounded-[16px]  w-[405px] h-[502px]">
       <div className="bg-[#191537]  h-[65px] rounded-t-[16px] flex items-center justify-between p-[20px]">
         <div className="text-[#fff]">Login</div>
@@ -41,7 +55,7 @@ const LoginModal = () => {
       </div>
  
 
-      <div className="mt-[13px] text-[#fff] flex items-center justify-center justify-around">
+      <div className="mt-[13px] text-[#fff] flex items-center  justify-around">
         <input className="bg-[#23224A] h-[38px] w-[361px] p-[20px] rounded-[31px] focus:outline-none" placeholder="Email" onChange={(e)=>setEmail(e.target.value)}/>
       </div>
 
@@ -51,8 +65,8 @@ const LoginModal = () => {
 
     
       <div className="flex items-center justify-center justify-between mt-[13px] m-auto w-[351px]">
-        <div><input className="bg-[#575DE8] text-[#fff]" type="checkbox"/> </div>
-        <div className=" text-[#fff] ml-[-300px] w-[95%]">Remember me</div>
+        <div><input className="bg-[#575DE8] text-[#fff]" type="checkbox" onChange={(e)=> setRememberme(e.target.checked)}/> </div>
+        <div className=" text-[#fff] ml-[-300px] w-[95%]" >Remember me</div>
       </div>
 
       <div className="mt-[13px] text-[#fff] flex items-center justify-center">
@@ -84,7 +98,7 @@ const LoginModal = () => {
         >Forgot Password</button>
       </div>
 
-
+         {err.bool  ?  "" :  <div className="text-red-500" key={err.message}>{err.message}{console.log({err})}</div>}
     </div>
     </div>
   )

@@ -10,11 +10,20 @@ export default class NetworkService {
 
 
     login(data){
-        return "ABCD";
+        return this.axiosPostResponse("login", data);
     }
 
     register(data){
-        return this.axiosPostResponse('register', data);
+        return this.axiosPostResponse("register", data);
+    }
+
+    getRooms()
+    {
+        return this.axiosGetResponse('chat/chat-room')
+    }
+    getRoomChat(data)
+    {
+        return this.axiosPostResponse('chat/send-user-msg-in-chat-room',data)
     }
 
 
@@ -41,7 +50,7 @@ export default class NetworkService {
 
     httpResponse(type = 'get', key, data, id = null, showLoader = false, showError = true, contentType = 'application/json') {
 
-        return new Promise((resolve, reject) => {
+        return new Promise((resolve) => {
 
             if (showLoader == true) {
                 utilityService.showLoader();
@@ -70,7 +79,7 @@ export default class NetworkService {
 
                     }
 
-                    reject(null);
+                    resolve(null);
                     return;
                 }
 
@@ -97,7 +106,7 @@ export default class NetworkService {
                     this.$router.push({ path: '/', query: {} });
                 }
 
-                reject(err);
+                resolve(err);
 
             }).catch((err) => {
                 console.log(err, "CATCH FROM NETWORK");

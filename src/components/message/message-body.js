@@ -1,6 +1,18 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import NetworkService from "../../services/network.service";
 
 const Message = () => {
+  
+  const networkService = new NetworkService();
+  // const room_id = localStorage.getItem("r_id");
+  // const data = networkService.getRoomChat({});
+  // const [chat, setchat] = useState(data)
+
+  useEffect(() => {
+    console.log("message useeffect")
+  }, [])
+  
+
   return (
 
       <div className="main-message-body mx-4 shadow-lg">
@@ -18,13 +30,8 @@ const Message = () => {
               just now
             </span>
             <div className="text-left text-[#9996BA] w-[224px] h-full mr-5 text-[12px] mt-[4px]">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum dolore eu fugiat
-              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-              sunt in culpa qui officia deserunt mollit anim id est laborum
+           {/* {room_id} */}
+           this is message
             </div>
           </div>
         </div>
