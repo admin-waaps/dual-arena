@@ -4,7 +4,7 @@ import { IoIosSend } from "react-icons/io";
 import NetworkService from "../../services/network.service";
 
 
-const MessageInput = () => {
+const MessageInput = ({setChatRef}) => {
 
   const networkService = new NetworkService();
   const room_id = localStorage.getItem("r_id");
@@ -13,17 +13,22 @@ const MessageInput = () => {
   
   // const [chat, setchat] = useState();
   const [message, setMessage] = useState();
-  const [r_id, set_rid] = useState(room_id);
+  const [r_id, set_rid] = useState(1);
   
 
   
   const SendMsg = async () =>{
     
-    const allMessages = await networkService.get_chat_room_list_by_id({"chat_room_id": r_id});
-    setMessage(allMessages);
-    const res = await networkService.getRoomChat({"chat_room_id": parseInt(r_id),"message": message});
-    console.log({res, allMessages})
+
+    console.log({message})
+    const res = await networkService.sendChatMsg({"chat_room_id": 1,"message": message});
+   
     setMessage('');
+
+    setChatRef(true);
+
+        // const allMessages = await networkService.get_chat_room_list_by_id({"chat_room_id": r_id});
+    // setMessage(allMessages);
     
   }
   
@@ -35,18 +40,18 @@ const MessageInput = () => {
 
       setMessage(e.target.value);
       SendMsg()
-      setMessage('')
+      // setMessage('')
     }
 
   }
 
 
-  useEffect(() => {
+  // useEffect(() => {
 
-    console.log({message})
-    set_rid(localStorage.getItem('r_id'))
+  //   console.log({message})
+  //   set_rid(localStorage.getItem('r_id'))
 
-  }, [SendMsg, localStorage.getItem('r_id')])
+  // }, [SendMsg, localStorage.getItem('r_id')])
 
 
   return (
@@ -58,7 +63,7 @@ const MessageInput = () => {
             placeholder="Type your messages"
             className="bg-[#23224A] h-[30px] text-[12px] focus:outline-none"
             onChange={(e)=>setMessage(e.target.value)}
-            onKeyPress={(e)=>PressEnter(e)}
+            // onKeyPress={(e)=>PressEnter(e)}
             value = {message}
           />
 
@@ -66,8 +71,8 @@ const MessageInput = () => {
             <div className="emoji h-[18px] w-[18px]">
               <FiSmile />
             </div>
-            <div className="send h-[18px] w-[18px]" onClick={SendMsg} >
-              <IoIosSend />
+            <div className="send h-[18px] w-[18px]" onClick={ () => { console.log("send mesg"); SendMsg() } } >
+              <IoIosSend  onClick={ () => { console.log("send mesg"); SendMsg() } } />
             </div>
           </div>
         </div>

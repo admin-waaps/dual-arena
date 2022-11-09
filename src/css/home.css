@@ -1,5 +1,12 @@
 @media screen and (max-width: 1221px) {
-    .chat{
-        
-    }
+  .chat {
   }
+}
+
+.ion-fab-button {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 80px;
+  height: 80px;
+}

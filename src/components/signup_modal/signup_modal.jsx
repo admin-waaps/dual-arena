@@ -8,7 +8,8 @@ const networkService = new NetworkService()
 
 const SignUpModal = () => {
 
-  const ShowSignIn = useSelector(state => state.AuthReducer)
+  const ShowSignUp = useSelector(state => state.AuthReducer)
+  
   const dispatch = useDispatch();
 
   const [name, setName] = useState('');
@@ -27,11 +28,16 @@ const SignUpModal = () => {
   
 
   const togglers = () =>{
+    // dispatch(showLogin()) ;
 
     dispatch(hideSignup());
-    dispatch(hideforgotPassword());
-    dispatch(showLogin()) ;
+    // dispatch(hideforgotPassword());
+    console.log("showLogin: " + ShowSignUp);
 
+  }
+
+  function refreshPage() {
+    window.location.reload(false);
   }
 
 
@@ -49,6 +55,9 @@ const SignUpModal = () => {
     }
     localStorage.setItem("_token", res.token);
     console.log(localStorage.getItem("_token"))
+    dispatch(hideSignup());
+    refreshPage();
+
   }
   
 
@@ -101,8 +110,9 @@ const SignUpModal = () => {
         onClick={()=>{
          togglers()
           console.log("hideSignup")
+
         }}
-        >I have and Account</button>
+        >I have an Account</button>
       </div>
 
       {err.bool  ?  "" :  <div className="text-red-500" key={err.message}>{err.message}{console.log({err})}</div>}

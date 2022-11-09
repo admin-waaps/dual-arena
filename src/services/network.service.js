@@ -22,7 +22,7 @@ export default class NetworkService {
         return this.axiosGetResponse('chat/chat-room')
     }
 
-    getRoomChat(data)
+    sendChatMsg(data)
     {
         return this.axiosPostResponse('chat/send-user-msg-in-chat-room',data)
     }

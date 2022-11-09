@@ -28,7 +28,14 @@ const LoginModal = () => {
     }
     console.log(res.token.token)
     localStorage.setItem("_token", res.token.token)
+    dispatch(hideLogin());
+    refreshPage();
+    
 
+  }
+
+  function refreshPage() {
+    window.location.reload(false);
   }
 
 
@@ -75,9 +82,11 @@ const LoginModal = () => {
           <button className="flex items-center justify-center bg-[#23224A] h-[38px] w-[361px] p-[20px] rounded-[31px] hover:bg-[#494ef1]"
             onClick={
               async () => {
+
+                console.log("button clidsadasdasdcked")
                 dispatch(showSignup());
                 // dispatch(hideLogin());
-                dispatch(hideforgotPassword())
+                // dispatch(hideforgotPassword())
                 console.log("showLogin: " + showSignUp);
               }} >I don't have an account </button>
         </div>
