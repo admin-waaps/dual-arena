@@ -21,9 +21,15 @@ export default class NetworkService {
     {
         return this.axiosGetResponse('chat/chat-room')
     }
+
     getRoomChat(data)
     {
         return this.axiosPostResponse('chat/send-user-msg-in-chat-room',data)
+    }
+    
+    get_chat_room_list_by_id(data)
+    {
+        return this.axiosPostResponse('chat/chat-room-list-by-id',data)
     }
 
 

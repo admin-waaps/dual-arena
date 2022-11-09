@@ -8,28 +8,49 @@ const MessageInput = () => {
 
   const networkService = new NetworkService();
   const room_id = localStorage.getItem("r_id");
+
   console.log("room id: "+room_id)
-  const [chat, setchat] = useState();
+  
+  // const [chat, setchat] = useState();
   const [message, setMessage] = useState();
   const [r_id, set_rid] = useState(room_id);
   
 
-  const handleSend = async () =>{
+  
+  const SendMsg = async () =>{
+    
+    const allMessages = await networkService.get_chat_room_list_by_id({"chat_room_id": r_id});
+    setMessage(allMessages);
+    const res = await networkService.getRoomChat({"chat_room_id": parseInt(r_id),"message": message});
+    console.log({res, allMessages})
+    setMessage('');
+    
+  }
+  
+  const PressEnter = (e) =>
+  {
+    console.log(e.key)
+    if(e.key == 'Enter')
+    {
 
-    const res = await networkService.getRoomChat({"chat_room_id": parseInt(r_id),
-    "message": message});
-    console.log(res)
+      setMessage(e.target.value);
+      SendMsg()
+      setMessage('')
+    }
+
   }
 
+
   useEffect(() => {
-    console.log({message, room_id})
+
+    console.log({message})
     set_rid(localStorage.getItem('r_id'))
-  }, [message])
-  console.log(parseInt(room_id))
-  
+
+  }, [SendMsg, localStorage.getItem('r_id')])
+
 
   return (
-    <div className="  absolute bottom-0 h-[41px] w-[100%] mb-3">
+    <div className=" bottom-0 h-[150px] w-[100%] mb-3 bg-[#191537] mt-3 overflow-x-hidden overflow-y-hidden">
       <center>
         <div className="texting flex justify-center items-center w-[267px] h-[40px] bg-[#23224A] rounded-full ">
           <input
@@ -37,13 +58,15 @@ const MessageInput = () => {
             placeholder="Type your messages"
             className="bg-[#23224A] h-[30px] text-[12px] focus:outline-none"
             onChange={(e)=>setMessage(e.target.value)}
+            onKeyPress={(e)=>PressEnter(e)}
+            value = {message}
           />
 
           <div className="flex gap-3">
             <div className="emoji h-[18px] w-[18px]">
               <FiSmile />
             </div>
-            <div className="send h-[18px] w-[18px] border-2" onClick={handleSend}>
+            <div className="send h-[18px] w-[18px]" onClick={SendMsg} >
               <IoIosSend />
             </div>
           </div>

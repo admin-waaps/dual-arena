@@ -6,7 +6,9 @@ import NetworkService from "../../services/network.service";
 const Rooms = (props) => {
   console.log({ props });
 
-  const handleRoom = (r_id) =>
+  const networkService = new NetworkService()
+
+  const handleRoom =  (r_id) =>
   {
     console.log({r_id});
     localStorage.setItem('r_id', r_id);
@@ -19,7 +21,7 @@ const Rooms = (props) => {
         {props.rooms &&
           props.rooms.map((room) => {
             return (
-              <div className="cursor-pointer">
+              <div className="cursor-pointer" key={room.id}>
                 <div className="px-10 py-1">
                   <span className="py-1 hover:underline" onClick={()=>handleRoom(room.id)}>{room.name}</span>
                 </div>
