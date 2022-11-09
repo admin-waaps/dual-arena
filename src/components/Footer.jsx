@@ -2,7 +2,7 @@ import { FaTwitter , FaYoutube , FaDiscord } from 'react-icons/fa'
 
 const Footer = () => {
   return (
-    <div className="bg-[#1D1B3F] flex items-center justify-between text-normal mt-[100px]">
+    <div className=" flex items-center justify-between text-normal mt-[100px]">
     <div className="w-[80px] h-[19px] flex items-center justify-between">
       <FaTwitter className='text-[#9996BA]'/>
       <FaYoutube className='text-[#9996BA]'/>

@@ -13,7 +13,9 @@ const Chat = ({ toggleChat }) => {
 
       <MessageBody />
 
-      <MessageInput />
+      <div>
+        <MessageInput />
+      </div>
     </div>
   );
 };

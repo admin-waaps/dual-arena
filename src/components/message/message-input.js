@@ -50,7 +50,7 @@ const MessageInput = () => {
 
 
   return (
-    <div className=" bottom-0 h-[150px] w-[100%] mb-3 bg-[#191537] mt-3 overflow-x-hidden overflow-y-hidden">
+    <div className="  pt-[0px] w-[100%] mb-3 bg-[#191537] mt-3 overflow-x-hidden overflow-y-hidden flex justify-center items-center">
       <center>
         <div className="texting flex justify-center items-center w-[267px] h-[40px] bg-[#23224A] rounded-full ">
           <input

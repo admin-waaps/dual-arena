@@ -1,10 +1,18 @@
-import React, { useEffect, useState } from "react";
+import { message } from "antd";
+import React, { useEffect, useState ,useRef } from "react";
 import NetworkService from "../../services/network.service";
 // import { requestForToken } from "../../firebase/firebase"; 
 
-const Message = () => {
+
+const   Message = () => {
   const networkService = new NetworkService();
   const [messages, setMessages] = useState([]);
+  const messagesEndRef = useRef(null)
+  // const divRef = useRef(null);
+
+  // useEffect(() => {
+  //   divRef.current.scrollIntoView({ behavior: 'smooth' });
+  // });
 
   const getchat = async () => {
     let id = localStorage.getItem("r_id");
@@ -27,8 +35,14 @@ const Message = () => {
     console.log({ message_body: messages });
   }, []);
 
+
+  useEffect(() => {
+    messagesEndRef.current?.scrollIntoView();
+  }, [messages]);
+
   return (
     <div className="main-message-body mx-4 mt-10 h-auto overflow-y-scroll overflow-x-hidden ">
+      {/* <div ref={divRef} />; */}
       {messages &&
         messages.map((message) => {
           return (
@@ -40,6 +54,7 @@ const Message = () => {
                   className="h-[32px] w-[32px] rounded-full"
                 />
               </div>
+              
               <div className="d2 w-4/5 text-left">
                 <span className="username text-[14px]">{message.user_id}</span>
                 <span className="msg-time text-[#4C4B6A] mx-2 text-[12px]">
@@ -52,8 +67,12 @@ const Message = () => {
               </div>
             </div>
           );
+          
         })}
+
+<div ref={messagesEndRef} />
     </div>
+   
   );
 };
 

@@ -121,7 +121,7 @@ const Home = () => {
             <Outlet />
           </div>
 
-          <div className="h-[25px] mt-[186px] mb-[100px] ">
+          <div className="h-[25px] mt-[156px] ">
             <Footer />
           </div>
         </div>
@@ -132,7 +132,7 @@ const Home = () => {
 
         <div className="overflow-x-hidden w-auto h-full">
           
-          <div className="w-auto h-auto transform transition-transform translate-x-0" ref={chat}>
+          <div className="w-auto h-full transform transition-transform translate-x-0" ref={chat}>
             <Chat onClick={toggleChat} toggleChat={toggleChat}/>
           </div>
 
