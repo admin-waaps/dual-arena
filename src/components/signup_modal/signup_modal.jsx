@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { FaTimes } from "react-icons/fa";
 import { useSelector, useDispatch } from "react-redux";
-import { hideSignup, showLogin, showSignup, signup } from "../../redux/actions/auth";
+import { hideforgotPassword, hideSignup, showLogin, showSignup, signup } from "../../redux/actions/auth";
 import NetworkService from "../../services/network.service";
 
 const networkService = new NetworkService()
@@ -25,6 +25,15 @@ const SignUpModal = () => {
 
   }, [name, email, password, confirm_password, referralCode, rememberme])
   
+
+  const togglers = () =>{
+
+    dispatch(hideSignup());
+    dispatch(hideforgotPassword());
+    dispatch(showLogin()) ;
+
+  }
+
 
   const handleSubmit = async function(){
 
@@ -52,32 +61,32 @@ const SignUpModal = () => {
             <FaTimes className="text-[#fff]"/>
         </div>
       </div>
-      <div className="mt-[13px] text-[#fff] flex items-center justify-center justify-around">
+      <div className="mt-[13px] text-[#fff] flex items-center justify-around">
         <input className="bg-[#23224A] h-[38px] w-[361px] p-[20px] rounded-[31px] focus:outline-none" placeholder="Display name" onChange={(e)=>{setName(e.target.value)}}/>
       </div>
 
-      <div className="mt-[13px] text-[#fff] flex items-center justify-center justify-around">
+      <div className="mt-[13px] text-[#fff] flex items-center justify-around">
         <input className="bg-[#23224A] h-[38px] w-[361px] p-[20px] rounded-[31px] focus:outline-none" placeholder="Email" onChange={(e)=>{setEmail(e.target.value)}}/>
       </div>
 
-      <div className="mt-[13px] text-[#fff] flex items-center justify-center justify-around">
+      <div className="mt-[13px] text-[#fff] flex items-center justify-around">
         <input className="bg-[#23224A] h-[38px] w-[361px] p-[20px] rounded-[31px] focus:outline-none" placeholder="Password" onChange={(e)=>{setPassword(e.target.value)}}/>
       </div>
 
-      <div className="mt-[13px] text-[#fff] flex items-center justify-center justify-around">
+      <div className="mt-[13px] text-[#fff] flex items-center justify-around">
         <input className="bg-[#23224A] h-[38px] w-[361px] p-[20px] rounded-[31px] focus:outline-none" placeholder="Confirm Password" onChange={(e)=>{setCpassword(e.target.value)}}/>
       </div>
 
-      <div className="mt-[13px] text-[#fff] flex items-center justify-center justify-around">
+      <div className="mt-[13px] text-[#fff] flex items-center justify-around">
         <input className="bg-[#23224A] h-[38px] w-[361px] p-[20px] rounded-[31px] focus:outline-none" placeholder="Referral code (optional)" onChange={(e)=>{setReferralCode(e.target.value)}}/>
       </div>
 
-      <div className="flex items-center justify-center justify-between mt-[13px] m-auto w-[351px]">
+      <div className="flex items-center justify-between mt-[13px] m-auto w-[351px]">
         <div><input className="bg-[#575DE8] text-[#fff]" type="checkbox"/> </div>
         <div className=" text-[#fff] ml-[-300px] w-[95%]">I agree to the Provacy Policy and Terms</div>
       </div> 
 
-      <div className="flex items-center justify-center justify-between mt-[13px] m-auto w-[351px]">
+      <div className="flex items-center justify-between mt-[13px] m-auto w-[351px]">
         <div><input className="bg-[#575DE8] text-[#fff]" type="checkbox" onChange={(e)=>{setRememberme(e.target.checked)}}/> </div>
         <div className=" text-[#fff] ml-[-300px] w-[95%]">Remember me</div>
       </div>
@@ -90,8 +99,7 @@ const SignUpModal = () => {
         <button className="flex items-center justify-center bg-[#23224A] h-[38px] w-[361px] p-[20px] rounded-[31px]" 
         
         onClick={()=>{
-          // dispatch(signup()); 
-          dispatch(hideSignup()); 
+         togglers()
           console.log("hideSignup")
         }}
         >I have and Account</button>

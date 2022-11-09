@@ -1,5 +1,5 @@
 import { FaTimes } from "react-icons/fa";
-import { signup, showSignup, hideSignup, hideLogin, showLogin, forgotPassword } from "../../redux/actions/auth";
+import { signup, showSignup, hideSignup, hideLogin, showLogin, forgotPassword, hideforgotPassword } from "../../redux/actions/auth";
 import { useSelector, useDispatch } from "react-redux";
 import NetworkService from "../../services/network.service";
 import { useEffect, useState } from "react";
@@ -75,18 +75,11 @@ const LoginModal = () => {
           <button className="flex items-center justify-center bg-[#23224A] h-[38px] w-[361px] p-[20px] rounded-[31px] hover:bg-[#494ef1]"
             onClick={
               async () => {
-                // dispatch(showLogin());
-                // dispatch(hideLogin());
-                // dispatch(hideSignup());
                 dispatch(showSignup());
-
-                // const res = await networkService.register(data);
-                // console.log(res);
-
-                // // if 
-
+                // dispatch(hideLogin());
+                dispatch(hideforgotPassword())
                 console.log("showLogin: " + showSignUp);
-              }} >I don't have an account</button>
+              }} >I don't have an account </button>
         </div>
 
 

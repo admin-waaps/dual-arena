@@ -8,10 +8,14 @@ import MessageInput from "./message/message-input";
 
 const Chat = ({ toggleChat }) => {
   return (
-    <div className="Chat relative flex flex-col text-white bg-[#191537] h-[100vh] w-[300px] ">
-      <MessageHeader toggleChat={toggleChat} />
+    <div className="Chat relative flex flex-col text-white bg-[#191537] h-[100vh] w-[300px]  justify-between">
+      <div>
+        <MessageHeader toggleChat={toggleChat} />
+      </div>
 
-      <MessageBody />
+      <div>
+        <MessageBody />
+      </div>
 
       <div>
         <MessageInput />

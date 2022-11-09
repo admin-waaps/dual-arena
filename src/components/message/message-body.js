@@ -1,50 +1,80 @@
 import { message } from "antd";
-import React, { useEffect, useState ,useRef } from "react";
+import Pusher from "pusher-js";
+import React, { useEffect, useState, useRef } from "react";
 import NetworkService from "../../services/network.service";
-// import { requestForToken } from "../../firebase/firebase"; 
-
+// import { requestForToken } from "../../firebase/firebase";
 
 const Message = () => {
   const networkService = new NetworkService();
-  const [messages, setMessages] = useState([]);
-  const messagesEndRef = useRef(null)
-  // const divRef = useRef(null);
-
-  // useEffect(() => {
-  //   divRef.current.scrollIntoView({ behavior: 'smooth' });
+  var [messages, setMessages] = useState();
+  const [message, setMessage] = useState("");
+  // const allMessages = [];
+  // const messagesEndRef = useRef(null);
+  // let chats=[]
+  // let id = localStorage.getItem("r_id");
+  // let chats =  networkService.get_chat_room_list_by_id({
+  //   chat_room_id: id,
   // });
-
+  // setMessages(chats);
   const getchat = async () => {
     let id = localStorage.getItem("r_id");
     let chats = await networkService.get_chat_room_list_by_id({
       chat_room_id: id,
     });
-    setMessages(chats);
+
+    messages = chats;
+
+
+
+    // allMessages.push(chats)
+    // console.log({this_allMessages: allMessages})
+    // console.log({this_message: messages})
+    // console.log({this_chat:chats})
+    // setMessages(chats)
+    // console.log({this_message: messages})
   };
 
-  // setInterval((messages)=>{
-  //   console.log('get chat interval')
-  //   getchat()
-  // },1000)
+  // useEffect(() => {
+  //   // getchat();
+  //   // setMessages(messages);
+  //   console.log("message useeffect");
+  //   console.log({ message_body: messages });
+  // }, []);
+
+  // useEffect(() => {
+  //   messagesEndRef.current?.scrollIntoView();
+  // }, [messages]);
 
   useEffect(() => {
-    // requestForToken();
     getchat();
-    setMessages(messages);
-    console.log("message useeffect");
-    console.log({ message_body: messages });
+
+    Pusher.logToConsole = true;
+    var pusher = new Pusher("781df2fba5c20dd72df9", {
+      cluster: "ap2",
+      forceTLS: true,
+    });
+
+    const this2 = this;
+    var channel = pusher.subscribe("group-chat-channel");
+    channel.bind("group-chat-event", function (data) {
+      console.log("PNGY", data);
+      // allMessages.push(data);
+      // setMessages([...allMessages]);
+    });
+    // messagesEndRef.current?.scrollIntoView();
+    // console.log({ messages, chats });
   }, []);
 
+  // useEffect( () => {
 
-  useEffect(() => {
-    messagesEndRef.current?.scrollIntoView();
-  }, [messages]);
+    
+  //   console.log(messages)
+  // }, [messages]);
 
   return (
     <div className="main-message-body mx-4 mt-10 h-auto overflow-y-scroll overflow-x-hidden ">
-      {/* <div ref={divRef} />; */}
       {messages &&
-        messages.map((message) => {
+        messages.list.map((message) => {
           return (
             <div className="chat flex flex-start mt-4 w-full " key={message.id}>
               <div className="h-auto w-auto pr-3 ">
@@ -54,9 +84,9 @@ const Message = () => {
                   className="h-[32px] w-[32px] rounded-full"
                 />
               </div>
-              
+
               <div className="d2 w-4/5 text-left">
-                <span className="username text-[14px]">{message.user_id}</span>
+                <span className="username text-[14px]">{message.user}</span>
                 <span className="msg-time text-[#4C4B6A] mx-2 text-[12px]">
                   {message.created_at}
                 </span>
@@ -67,12 +97,8 @@ const Message = () => {
               </div>
             </div>
           );
-          
         })}
-
-<div ref={messagesEndRef} />
     </div>
-   
   );
 };
 

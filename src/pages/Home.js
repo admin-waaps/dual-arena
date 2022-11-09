@@ -88,11 +88,12 @@ const Home = () => {
   return (
 
     <center>
+      
 
       {isToken ? null: <div className="absolute h-[100vh] w-full bg-black bg-opacity-50 z-10  flex justify-center items-center"> <LoginModal/> </div>}
-      {forgotPassword ? <div className="absolute h-[100vh] w-full bg-black bg-opacity-50 z-10  flex justify-center items-center"> <RecoverModal/> </div>  : null}
       {ShowSignUp ?  <div className="absolute h-[100vh] w-full bg-black bg-opacity-50 z-10  flex justify-center items-center"> <SignUpModal/> </div> : null}
       {ticketToggler ? <div className="absolute h-[100vh] w-full bg-black bg-opacity-50 z-10  flex justify-center items-center"> <OpenTicket/> </div> : null}
+      {/* {forgotPassword ? <div className="absolute h-[100vh] w-full bg-black bg-opacity-50 z-10  flex justify-center items-center"> <RecoverModal/> </div>  : null} */}
       
       
       <div className="flex justify-between relative h-[auto] w-[auto] text-white ">
