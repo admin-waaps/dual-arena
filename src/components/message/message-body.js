@@ -4,7 +4,7 @@ import NetworkService from "../../services/network.service";
 // import { requestForToken } from "../../firebase/firebase"; 
 
 
-const   Message = () => {
+const Message = () => {
   const networkService = new NetworkService();
   const [messages, setMessages] = useState([]);
   const messagesEndRef = useRef(null)
