@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import NetworkService from "../../services/network.service";
-import { requestForToken } from "../../firebase/firebase"; 
+// import { requestForToken } from "../../firebase/firebase"; 
 
 const Message = () => {
   const networkService = new NetworkService();
@@ -20,7 +20,7 @@ const Message = () => {
   // },1000)
 
   useEffect(() => {
-    requestForToken();
+    // requestForToken();
     getchat();
     setMessages(messages);
     console.log("message useeffect");
