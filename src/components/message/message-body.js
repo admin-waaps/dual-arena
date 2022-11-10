@@ -67,7 +67,9 @@ const Message = ({chatRef, setChatRef}) => {
     const this2 = this;
     var channel = pusher.subscribe("group-chat-channel");
     channel.bind("group-chat-event", function (data) {
-      console.log("PNGY", data);
+      setMessage(data)
+      console.log("PNGY", data, {message});
+
       // allMessages.push(data);
       // setMessages([...allMessages]);
     });

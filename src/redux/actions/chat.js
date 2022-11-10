@@ -1,7 +1,13 @@
-export function showChatRooms()
+export async function fetchrooms()
 {
     return{
-        type: "SHOW_CHAT_ROOMS"
+        type: "FETCH_ROOMS"
     }
 }
 
+
+export function LoadRooms(){
+    return{
+        type: "LOAD_ROOMS"
+    }
+}

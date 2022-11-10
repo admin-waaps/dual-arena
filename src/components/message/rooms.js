@@ -4,9 +4,6 @@ import NetworkService from "../../services/network.service";
 // CHAT/CHAT-ROOM  api for rooms
 
 const Rooms = (props) => {
-  console.log({ props });
-
-  const networkService = new NetworkService()
 
   const handleRoom =  (r_id) =>
   {

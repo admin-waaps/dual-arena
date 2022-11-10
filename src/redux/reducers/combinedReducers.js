@@ -1,6 +1,7 @@
 import { combineReducers } from "redux";
 import TogglerReducer from "./support/supportToggler";
 import AuthReducer from './authReducers/authReducer.js'
+import ChatReducer from "./chat/chat";
 // import ChatRe
 
 
@@ -8,7 +9,8 @@ import AuthReducer from './authReducers/authReducer.js'
 const reducers = 
 { 
     TogglerReducer,
-    AuthReducer
+    AuthReducer,
+    ChatReducer
 }
 
 const allReducers = combineReducers(reducers);

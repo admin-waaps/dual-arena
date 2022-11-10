@@ -33,16 +33,16 @@ const Home = () => {
   const token = localStorage.getItem("_token");
 
   useEffect(() => {
-    console.log("HOME useEffect");
+    // console.log("HOME useEffect");
     if (token) {
-      console.log("useEffect token : " + token);
+      // console.log("useEffect token : " + token);
       setToken(true);
       isLoggedIn = true;
-      console.log("istoken:" + isToken);
+      // console.log("istoken:" + isToken);
     }
   }, []);
 
-  console.log("ticket toggler: " + ticketToggler);
+  // console.log("ticket toggler: " + ticketToggler);
 
   // let chatClass = 'translate-x-0'
   // const [isSignOut, setisSignOut] = useState(true)
@@ -55,10 +55,10 @@ const Home = () => {
     let chatClass = "translate-x-0";
     setIsToggeld(!isToggeld);
 
-    console.log("toggle chat"+isToggeld);
+    // console.log("toggle chat"+isToggeld);
     
-    console.log(chat.current.classList.contains(chatClass));
-    console.log(chat.current.classList.contains(chatClass));
+    // console.log(chat.current.classList.contains(chatClass));
+    // console.log(chat.current.classList.contains(chatClass));
 
     if (chat.current.classList.contains(chatClass)) {
       chat.current.classList.remove(chatClass);
