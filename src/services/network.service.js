@@ -29,7 +29,8 @@ export default class NetworkService {
     
     get_chat_room_list_by_id(data)
     {
-        return this.axiosPostResponse('chat/chat-room-list-by-id',data)
+        console.log({data})
+        return this.axiosPostResponse('chat/chat-room-list-by-id', data)
     }
 
 

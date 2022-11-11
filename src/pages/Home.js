@@ -49,28 +49,30 @@ const Home = () => {
 
   const chat = useRef();
   const chatButton = useRef();
+  const Hide = useRef()
 
   const toggleChat = () => {
-    let transition = "translate-x-full";
-    let chatClass = "translate-x-0";
-    setIsToggeld(!isToggeld);
+    let transition_full = "translate-x-full";
+    let translate_x_0 = "translate-x-0";
 
-    // console.log("toggle chat"+isToggeld);
-    
-    // console.log(chat.current.classList.contains(chatClass));
-    // console.log(chat.current.classList.contains(chatClass));
 
-    if (chat.current.classList.contains(chatClass)) {
-      chat.current.classList.remove(chatClass);
-      chat.current.classList.add(transition);
-      chat.current.classList.add("hidden");
+
+    if (chat.current.classList.contains(translate_x_0)) {
+      console.log(chat.current.classList.contains(translate_x_0))
+      chat.current.classList.remove(translate_x_0);
+      chat.current.classList.add(transition_full);
+
+      // chat button toggler
       chatButton.current.classList.remove("hidden");
-      // chat.current.classList.add("hidden")
-    } else if (!chat.current.classList.contains(chatClass)) {
-      chat.current.classList.remove(transition);
+      
+    } else if (!chat.current.classList.contains(translate_x_0)) {
+      console.log(chat.current.classList.contains(translate_x_0))
+      chat.current.classList.remove(transition_full);
       chat.current.classList.remove("hidden");
-      chat.current.classList.add(chatClass);
-      chatButton.current.classList.add("hidden");
+      chat.current.classList.add(translate_x_0);
+      
+      // chat button toggler
+      chatButton.current.classList.add("hidden"); 
     }
   };
 
@@ -140,19 +142,16 @@ const Home = () => {
             <Chat onClick={toggleChat} toggleChat={toggleChat} />
           </div>
 
-          {isToggeld ? (
-            ""
-          ) : (
-            <div className="ion-fab-button ">
+     
+            <div className="ion-fab-button "  ref={chatButton}>
               <div
-                className=" flex justify-center items-center rounded-full h-[50px] w-[50px] bg-[#191537] hover:bg-[#5a4dba] mt-[10px] mr-[10px] transition duration-150 ease-in-out hover:h-[60px] hover:w-[60px] hidden "
+                className=" flex justify-center items-center rounded-full h-[50px] w-[50px] bg-[#191537] hover:bg-[#5a4dba] mt-[10px] mr-[10px] transition duration-150 ease-in-out hover:h-[60px] hover:w-[60px] z-0"
                 onClick={toggleChat}
                 ref={chatButton}
               >
                 <BsFillChatLeftTextFill />
               </div>
             </div>
-          )}
         </div>
       </div>
     </center>

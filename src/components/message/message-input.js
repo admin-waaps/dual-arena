@@ -2,77 +2,109 @@ import React, { useEffect, useState } from "react";
 import { FiSmile } from "react-icons/fi";
 import { IoIosSend } from "react-icons/io";
 import NetworkService from "../../services/network.service";
+import EmojiPicker, { EmojiStyle } from "emoji-picker-react";
+import { SendMessage } from "../../redux/actions/chat";
 
 
-const MessageInput = ({setChatRef}) => {
 
-  const networkService = new NetworkService();
+const MessageInput = ({ setChatRef, setInputMessage, socket }) => {
   const room_id = localStorage.getItem("r_id");
+  const [message, setMessage] = useState("");
+  const [messageList, setMessageList] = useState([]);
+  const [currentMessage, setCurrentMessage] = useState("");
+  const [showPicker, setShowPicker] = useState(false);
 
-  console.log("room id: "+room_id)
-  
-  // const [chat, setchat] = useState();
-  const [message, setMessage] = useState();
-  const [r_id, set_rid] = useState(1);
-  
-
-  
-  const SendMsg = async () =>{
-    
-
-    console.log({message})
-    const res = await networkService.sendChatMsg({"chat_room_id": 1,"message": message});
-   
-    setMessage('');
-
-    setChatRef(true);
-
-        // const allMessages = await networkService.get_chat_room_list_by_id({"chat_room_id": r_id});
-    // setMessage(allMessages);
-    
-  }
-  
-  const PressEnter = (e) =>
-  {
-    console.log(e.key)
-    if(e.key == 'Enter')
-    {
-
-      setMessage(e.target.value);
-      SendMsg()
-      // setMessage('')
+  const onEmojiClick = (event, emojiObject) => {
+    if (message == undefined) {
+      setCurrentMessage(() => "" + emojiObject.emoji);
+    } else {
+      setCurrentMessage((prevInput) => prevInput + emojiObject.emoji);
     }
+  };
 
-  }
+  const sendMessage = async () => {
+    if (currentMessage !== "") {
+      const messageData = {
+        room: localStorage.getItem("join_room"),
+        author: "ss",
+        message: currentMessage,
+        time:
+          new Date(Date.now()).getHours() +
+          ":" +
+          new Date(Date.now()).getMinutes(),
+      };
 
+      await socket.emit("send_message", messageData);
+      setMessageList((list) => [...list, messageData]);
+      setInputMessage({messageList});
+      setCurrentMessage("");
+    }
+  };
 
-  // useEffect(() => {
-
-  //   console.log({message})
-  //   set_rid(localStorage.getItem('r_id'))
-
-  // }, [SendMsg, localStorage.getItem('r_id')])
-
+  useEffect(() => {
+    console.log({ useEffect_data: "data", messageList, socket });
+    socket.on("receive_message", (data) => {
+      console.log("msg recieve "+data)
+      setMessageList((list) => [...list, data]);
+    });
+  }, [socket, sendMessage]);
 
   return (
-    <div className="  pt-[0px] w-[100%] mb-3 bg-[#191537] mt-3 overflow-x-hidden overflow-y-hidden flex justify-center items-center">
+    <div className="  pt-[0px] w-[100%] mb-3 bg-[#191537] mt-3 overflow-x-hidden overflow-y-hidden flex justify-center items-center ">
       <center>
         <div className="texting flex justify-center items-center w-[267px] h-[40px] bg-[#23224A] rounded-full ">
           <input
             type="text"
             placeholder="Type your messages"
-            className="bg-[#23224A] h-[30px] text-[12px] focus:outline-none"
-            onChange={(e)=>setMessage(e.target.value)}
-            // onKeyPress={(e)=>PressEnter(e)}
-            value = {message}
+            className="bg-[#23224A] h-[30px] text-[12px] focus:outline-none "
+            onChange={(e) => setCurrentMessage(e.target.value)}
+            onKeyPress={(e) => {
+              e.key === "Enter" && sendMessage();
+            }}
+            value={currentMessage}
           />
 
-          <div className="flex gap-3">
-            <div className="emoji h-[18px] w-[18px]">
+          {showPicker && (
+            <div className="absolute h-auto w-auto transfrom -translate-y-[60%] p-5 bg-white">
+              <div
+                className="text-black float-right font-black mr-2"
+                onClick={() => {
+                  setShowPicker(!showPicker);
+                }}
+              >
+                X
+              </div>
+              <EmojiPicker
+                height={"500px"}
+                width={"100%"}
+                onEmojiClick={onEmojiClick}
+                pickerStyle={{
+                  backgroundColor: "",
+                  border: "none",
+                  color: "white",
+                  boxShadow: "none",
+                }}
+              />
+            </div>
+          )}
+
+          <div className="flex gap-3  p-2">
+            <div
+              className="emoji h-[18px] w-[18px] cursor-pointer "
+              onClick={() => {
+                setShowPicker(!showPicker);
+              }}
+            >
               <FiSmile />
             </div>
-            <div className="send h-[18px] w-[18px]" onClick={ () => { console.log("send mesg"); SendMsg() } } >
-              <IoIosSend  onClick={ () => { console.log("send mesg"); SendMsg() } } />
+            <div
+              className=" h-[18px] w-[18px] cursor-pointer  z-10"
+              onClick={() => {
+                console.log("send message");
+                sendMessage();
+              }}
+            >
+              <IoIosSend />
             </div>
           </div>
         </div>

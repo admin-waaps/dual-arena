@@ -1,9 +1,16 @@
 import React, { useEffect, useState } from "react";
 import NetworkService from "../../services/network.service";
+import io from 'socket.io-client';
+const socket = io.connect("http://localhost:5000");
+
 
 // CHAT/CHAT-ROOM  api for rooms
 
 const Rooms = (props) => {
+
+  const [username, setUsername] = useState("");
+  const [room, setRoom] = useState("");
+  const [showChat, setShowChat] = useState(false);
 
   const handleRoom =  (r_id) =>
   {
@@ -11,6 +18,15 @@ const Rooms = (props) => {
     localStorage.setItem('r_id', r_id);
     
   }
+
+  const joinRoom = (room) => {
+    console.log({"joinRoom" : room })
+    if (room !== "") {
+      socket.emit("join_room", room);
+      setShowChat(true);
+      localStorage.setItem("join_room", room)
+    }
+  };
 
   return (
     <div>
@@ -20,7 +36,8 @@ const Rooms = (props) => {
             return (
               <div className="cursor-pointer" key={room.id}>
                 <div className="px-10 py-1">
-                  <span className="py-1 hover:underline" onClick={()=>handleRoom(room.id)}>{room.name}</span>
+                  {/* <span className="py-1 hover:underline" onClick={()=>handleRoom(room.id)}>{room.name}</span> */}
+                  <span className="py-1 hover:underline" onClick={()=>joinRoom(room.id)}>{room.name}</span>
                 </div>
               </div>
             );

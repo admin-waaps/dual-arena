@@ -8,7 +8,7 @@ import Rooms from "./rooms";
 
 const MessageHeader = ({ toggleChat }) => {
   const networkService = new NetworkService();
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
   const [rooms, setRooms] = useState();
   const [toggler, setToggler] = useState(false);
@@ -22,7 +22,7 @@ const MessageHeader = ({ toggleChat }) => {
   useEffect(() => {
     loadRooms();
     
-    dispatch(LoadRooms());
+    // dispatch(LoadRooms());
   }, [setRooms]);
 
   const data = useSelector(async state => {return ( await state.ChatReducer)});
@@ -63,7 +63,7 @@ const MessageHeader = ({ toggleChat }) => {
       </span>
 
       {toggler && (
-        <div className="w-auto h-auto absolute shadow-xl top-16">
+        <div className="w-auto h-auto absolute shadow-xl top-16 z-50">
           <Rooms rooms={rooms} />
         </div>
       )}

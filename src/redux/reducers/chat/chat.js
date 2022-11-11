@@ -1,42 +1,34 @@
-import NetworkService from "../../../services/network.service";
+// import io from "socket.io-client";
 
-let networkService = new NetworkService();
+// const sendMessage = (e) => {
+//   e.preventDefault();
 
-async function fetchrooms() {
-  let data = await networkService.getRooms().then((data) => {
-    console.log({ "Chat Reducer": data });
-    return data;
-  });
-  return data;
-}
+//   const data = { username, message, createdDate: new Date() };
 
-const loadRooms = async function () {
-  let data = await networkService.getRooms();
-  return data;
-};
+//   socket.emit("send_message", JSON.stringify(data));
+
+//   setMessage("");
+// };
 
 const ChatReducer = async function (state = 0, action) {
   switch (action.type) {
+
+    case "SEND_MESSAGE":
+      return state
+
+
     case "FETCH_ROOMS":
-      state = await fetchrooms().then((state) => {
-        console.log({ state });
-        return state;
-      });
       return state;
 
     case "LOAD_ROOMS":
-      state = await loadRooms();
-      console.log({ "LOAD_ROOM": state });
       return state;
 
     case "SHOW_CHAT":
       return state;
 
     case "SHOW_ROOMS":
-      return async function () {
-        let res = await networkService.getRooms();
-        console.log(res);
-      };
+      return state
+
     default:
       return state;
   }

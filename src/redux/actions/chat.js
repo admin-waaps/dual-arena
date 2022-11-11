@@ -11,3 +11,10 @@ export function LoadRooms(){
         type: "LOAD_ROOMS"
     }
 }
+
+
+export function SendMessage(){
+    return{
+        type: "SEND_MESSAGE"
+    }
+}
