@@ -1,5 +1,4 @@
-@media screen and (max-width: 1023px) {
-   
+@media screen and (max-width: 1221px) {
     .comp1{
         margin-right: 10px;
     }
@@ -39,11 +38,9 @@
         margin-bottom: 10px;
     }
   }
+}
 
-  @media screen and (min-width: 1024px) {
-    .container header .header-nav-area #nav_container  {
-        display:flex;
-      }
+  @media screen and (min-width: 1222px) {
     .comp1{
         margin-top: 0;
     }
@@ -80,9 +77,14 @@
         
     }
   }
+}
 
-  .blur_box{
-    /* z-index: ; */
-    position: relative;
-    /* top: 150px; */
-  }
+.blur_box {
+  /* z-index: ; */
+  position: relative;
+  /* top: 150px; */
+}
+
+.main-message-body {
+  height: calc(100vh - 140px);
+}

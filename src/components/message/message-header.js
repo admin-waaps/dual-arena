@@ -2,11 +2,13 @@ import React, { useEffect, useState } from "react";
 import { BiMessageSquareDetail } from "react-icons/bi";
 import { IoInformationCircle } from "react-icons/io5";
 import { useSelector, useDispatch } from "react-redux";
+import { LoadRooms } from "../../redux/actions/chat";
 import NetworkService from "../../services/network.service";
 import Rooms from "./rooms";
 
 const MessageHeader = ({ toggleChat }) => {
   const networkService = new NetworkService();
+  // const dispatch = useDispatch();
 
   const [rooms, setRooms] = useState();
   const [toggler, setToggler] = useState(false);
@@ -19,8 +21,13 @@ const MessageHeader = ({ toggleChat }) => {
 
   useEffect(() => {
     loadRooms();
+    
+    // dispatch(LoadRooms());
   }, [setRooms]);
 
+  const data = useSelector(async state => {return ( await state.ChatReducer)});
+  
+  console.log({"message_header_data": data})
   // loadRooms()
 
   return (
@@ -56,7 +63,7 @@ const MessageHeader = ({ toggleChat }) => {
       </span>
 
       {toggler && (
-        <div className="w-auto h-auto absolute shadow-xl top-16">
+        <div className="w-auto h-auto absolute shadow-xl top-16 z-50">
           <Rooms rooms={rooms} />
         </div>
       )}

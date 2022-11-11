@@ -17,13 +17,18 @@ const SignOutModal = (props) => {
 
       <div className="mt-[20px] text-[#fff] flex items-center justify-center justify-around">
         <button className="bg-[#23224A] h-[38px] w-[174px] rounded-[31px] text-[14px]" onClick={()=>{props.setIsSignoutOpen(false)}}>Cancel</button>
-        <button  className="bg-[#575DE8] h-[38px] w-[174px] rounded-[31px] text-[14px]">SignOut</button>
+        <button  className="bg-[#575DE8] h-[38px] w-[174px] rounded-[31px] text-[14px]" onClick={setLogout()}>SignOut</button>
       </div>
 
 
     </div>
     </div>
   )
+}
+
+function setLogout(){
+  localStorage.removeItem("_token");
+  window.location.reload();
 }
 
 export default SignOutModal;
