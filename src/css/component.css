@@ -1,4 +1,5 @@
-@media screen and (max-width: 1221px) {
+@media screen and (max-width: 1023px) {
+   
     .comp1{
         margin-right: 10px;
     }
@@ -39,7 +40,10 @@
     }
   }
 
-  @media screen and (min-width: 1222px) {
+  @media screen and (min-width: 1024px) {
+    .container header .header-nav-area #nav_container  {
+        display:flex;
+      }
     .comp1{
         margin-top: 0;
     }

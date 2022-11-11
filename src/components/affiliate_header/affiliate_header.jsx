@@ -5,7 +5,7 @@ import question from './../../assets/icons/question_mark.png'
 
 const AffiliateHeader = () => {
     return (
-        <div className="bg-[#1D1B3F] w-[1200px] h-[38px] flex justify-center items-center justify-between">
+        <div className="bg-[#1D1B3F] w-[1200px] h-[89px] flex justify-center items-center justify-between">
 
 
             <div className='flex justify-between items-center h-[38px] w-[200px]'>

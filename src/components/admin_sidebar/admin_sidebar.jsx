@@ -8,71 +8,160 @@ import sidebar5 from "../../assets/icons/sidebar5.png"
 import sidebar6 from "../../assets/icons/sidebar6.png"
 import sidebar7 from "../../assets/icons/sidebar7.png"
 import { FaAngleRight } from "react-icons/fa";
+import { useState } from "react"
+
+import {
+    Routes,
+    Route,
+    Link,
+    useRouteMatch,
+    useParams,
+    Router,
+} from "react-router-dom";
+
+
+
+
 
 const AdminSideBar = () => {
 
+
+    const [openMenu, setOpenMenu] = useState(false);
+    const [openMenu2, setOpenMenu2] = useState(false);
+    const toggleMenu = () => {
+        setOpenMenu(!openMenu);
+    }
+    const toggleMenu2 = () => {
+        setOpenMenu2(!openMenu2);
+    }
     return (
-            <div className="border-[#0F0F37] border-[1px] bg-[#0F0F37] rounded-r-[150px] h-[1080px] w-[299px]">
 
-                <div className=" ml-[28px] mt-[40px] w-[150px] text-[#fff]">
-                    <img src={adminlogo} alt="" />
-                </div>
+        <div className="border-[#0F0F37] border-[1px] bg-[#0F0F37] rounded-r-[150px] h-[1080px] w-[299px]">
+            {/* <button >Show menu</button> */}
 
-                <div className=" mt-[100px] h-[61px] w-[299px] text-[#fff] flex items-center">
-                    <div className=" ml-[30px] w-[140px] flex justify-between items-center">
-                        <img src={sidebar1} alt="" />
-                        <div className="text-[18px]">Statistics</div>
+            <Link to="/" >
+                <div >
+                    <div className="cursor-pointer ml-[28px] mt-[40px] w-[150px] text-[#fff]">
+                        <img src={adminlogo} alt="" />
                     </div>
                 </div>
+            </Link >
+            <Link to="/">
+                <div >
+                    <div className="cursor-pointer  mt-[100px] h-[61px] w-[299px] text-[#fff] flex items-center">
+                        <div className=" ml-[30px] w-[140px] flex justify-between items-center">
+                            <img src={sidebar1} alt="" />
+                            <div className="text-[18px]">Statistics</div>
+                        </div>
+                    </div>
+                </div>
+            </Link>
 
-                <div className=" mt-[30px] h-[61px] w-[299px] text-[#fff] flex items-center">
-                    <div className=" ml-[30px] w-[105px] flex justify-between items-center">
-                        <img src={sidebar2} alt="" />
+            <Link to="/Users">
+                <div className="cursor-pointer  mt-[30px] h-[61px] w-[299px] text-[#fff] flex items-center">
+                    <img src={sidebar2} alt="" className="ml-[35px]" />
+                    <div className="ml-[22px] w-[105px] flex justify-between items-center">
                         <div className="text-[18px] text-[#68688D]">Users</div>
                     </div>
                 </div>
+            </Link>
 
-                <div className=" mt-[30px] h-[61px] w-[299px] text-[#fff] flex items-center">
-                    <div className=" ml-[30px] w-[220px] flex justify-between items-center">
-                        <img src={sidebar3} alt="" />
-                        <div className="text-[18px] text-[#68688D]">Global Reports</div>
-                        <FaAngleRight className="text-[#68688D]"/>
+            <div onClick={toggleMenu} className="cursor-pointer mt-[30px] h-[61px] w-[299px] text-[#fff] flex items-center">
+                <div onClick={toggleMenu} className=" cursor-pointer ml-[30px] w-[220px] flex justify-between items-center">
+                    <img onClick={toggleMenu} src={sidebar3} alt="" />
+                    <div onClick={toggleMenu} className="text-[18px] text-[#68688D]">Global Reports</div>
+                    <FaAngleRight className="text-[#68688D]" onClick={toggleMenu} />
+                </div>
+            </div>
+
+            {openMenu ? (
+                <div>
+
+                    <Link to="/Agentreport">
+                        <div className=" cursor-pointer mt-[30px] h-[61px] w-[200px] text-[#fff] flex items-center">
+                            <div className=" ml-[30px] w-[220px] flex justify-between items-center">
+                                <img src={sidebar3} alt="" />
+                                <div className="text-[18px] text-[#68688D]">Agent Report</div>
+                            </div>
+                        </div>
+                    </Link>
+                    <Link to="/playerreport">
+
+                        <div className="cursor-pointer mt-[30px] h-[61px] w-[200px] text-[#fff] flex items-center">
+                            <div className=" ml-[30px] w-[220px] flex justify-between items-center">
+                                <img src={sidebar3} alt="" />
+                                <div className="text-[18px] text-[#68688D]">Player Reports</div>
+                            </div>
+                        </div>
+
+                    </Link>
+                </div>
+
+            ) : null}
+
+
+            <div onClick={toggleMenu2} className="cursor-pointer mt-[30px] h-[61px] w-[299px] text-[#fff] flex items-center">
+                <div onClick={toggleMenu2} className=" ml-[30px] w-[186px] flex justify-between items-center">
+                    <img onClick={toggleMenu2} src={sidebar4} alt="" />
+                    <div onClick={toggleMenu2} className="text-[18px] text-[#68688D]">File Reports</div>
+                    <FaAngleRight onClick={toggleMenu2} className="text-[#68688D]" />
+                </div>
+            </div>
+
+            {openMenu2 ? (
+                <div>
+
+                    <Link to="/widthdrawals">
+
+                        <div className=" cursor-pointer mt-[30px] h-[61px] w-[300px] text-[#fff] flex items-center">
+                            <div className=" ml-[30px] w-[220px] flex justify-between items-center">
+                                <img src={sidebar3} alt="" />
+                                <div className="text-[18px] text-[#68688D]">ChangeWithdrawals</div>
+                            </div>
+                        </div>
+
+                    </Link>
+                    <div className="cursor-pointer  mt-[30px] h-[61px] w-[200px] text-[#fff] flex items-center">
+                        <div className=" ml-[30px] w-[220px] flex justify-between items-center">
+                            <img src={sidebar3} alt="" />
+                            <div className="text-[18px] text-[#68688D]">Player History</div>
+                        </div>
                     </div>
                 </div>
-                
-                <div className=" mt-[30px] h-[61px] w-[299px] text-[#fff] flex items-center">
-                    <div className=" ml-[30px] w-[186px] flex justify-between items-center">
-                        <img src={sidebar4} alt="" />
-                        <div className="text-[18px] text-[#68688D]">File Reports</div>
-                        <FaAngleRight className="text-[#68688D]"/>
-                    </div>
-                </div>
-                <div className=" mt-[30px] h-[61px] w-[299px] text-[#fff] flex items-center">
+
+            ) : null}
+
+
+
+            <Link to="/gamereports">
+                <div className="cursor-pointer  mt-[30px] h-[61px] w-[299px] text-[#fff] flex items-center">
                     <div className=" ml-[30px] w-[174px] flex justify-between items-center">
                         <img src={sidebar5} alt="" />
                         <div className="text-[18px] text-[#68688D]">Game Reports</div>
                     </div>
                 </div>
+            </Link>
 
-                <div className=" mt-[30px] h-[61px] w-[299px] text-[#fff] flex items-center">
-                    <div className=" ml-[30px] w-[120px] flex justify-between items-center">
-                        <img src={sidebar6} alt="" />
-                        <div className="text-[18px] text-[#68688D]">Finance</div>
-                    </div>
+            
+            <div className=" mt-[30px] h-[61px] w-[299px] text-[#fff] flex items-center">
+                <div className=" ml-[30px] w-[120px] flex justify-between items-center">
+                    <img src={sidebar6} alt="" />
+                    <div className="text-[18px] text-[#68688D]">Finance</div>
                 </div>
-
-                <div className=" mt-[30px] h-[61px] w-[299px] text-[#fff] flex items-center">
-                    <div className=" ml-[30px] w-[165px] flex justify-between items-center">
-                        <img src={sidebar7} alt="" />
-                        <div className="text-[18px] text-[#68688D]">My Summary</div>
-                    </div>
-                </div>
-
-
-
-
-
             </div>
+
+            <div className=" mt-[30px] h-[61px] w-[299px] text-[#fff] flex items-center">
+                <div className=" ml-[30px] w-[165px] flex justify-between items-center">
+                    <img src={sidebar7} alt="" />
+                    <div className="text-[18px] text-[#68688D]">My Summary</div>
+                </div>
+            </div>
+
+
+
+
+
+        </div >
 
 
     )

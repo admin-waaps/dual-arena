@@ -31,13 +31,32 @@ import AdminPlayer from "./components/admin_player/admin_player";
 import AdminDash from "./components/admin_dashboard/admin_dashboard";
 import AdminSideBar from "./components/admin_sidebar/admin_sidebar";
 import AdminHeader from "./components/admin_header/admin_header";
-import AdminPanel from "./admin_panel/admin_panel";
+// import AdminPanel from "./admin_panel/admin_panel";
+import AdminPanelHome from "./pages/AdminHome";
+import Dash from "./pages/Dash";
+import Users from "./pages/Users";
+import Appp from "./practice";
+import Agentreport from "./pages/Agentreport";
+import Playerreport from "./pages/Playerreport";
+import Widthdrawals from "./pages/widthdrawals";
+import Gamereport from "./pages/Gamereport";
 
 
 function App() {
-  return ( 
+  return (
     <>
+    {/* <Appp/> */}
       <Routes>
+
+        {/* <Route path="/" element={<AdminPanelHome />} exact>
+        <Route path="/" element={<Dash/>}/>
+        <Route path="/Users" element={<Users/>}/>
+        <Route path="/AgentReport" element={<Agentreport/>}/>
+        <Route path="/playerReport" element={<Playerreport/>}/>
+        <Route path="/widthdrawals" element={<Widthdrawals/>}/>
+        <Route path="/gamereports" element={<Gamereport/>}/>
+        </Route> */}
+
         {/* <Route path="/" element={<AdminGame/>} exact> */}
         {/* <Route path="/" element={<AdminReport/>} exact> */}
         {/* <Route path="/" element={<AdminCharges/>} exact> */}
@@ -46,8 +65,8 @@ function App() {
         {/* <Route path="/" element={<AdminDash/>} exact> */}
         {/* <Route path="/" element={<AdminSideBar/>} exact> */}
         {/* <Route path="/" element={<AdminHeader/>} exact> */}
-        {/* <Route path="/" element={<AdminPanel/>} exact> */}
-        <Route path="/" element={<Home/>} exact>
+        {/* <Route path="/" element={<AdminPanel />} exact> */}
+        <Route path="/" element={<Home />} exact>
           <Route path="/" element={<Component />} />
           <Route path="/duel" element={<Duel />} />
           <Route path="/loot" element={<Loot />} />
@@ -58,12 +77,13 @@ function App() {
           <Route path="/exchange" element={<Exchange />} />
           <Route path="/support" element={<Support />} />
           <Route path="/Error" element={<Error />} />
-        </Route>
+          
+        </Route> 
       </Routes>
 
       {/* <Route path="/pages" element={<Component />}></Route> */}
 
-  
+
     </>
   );
 }
